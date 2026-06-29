@@ -3,76 +3,76 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Подписка — подарочные карты и подписки</title>
+<title>Graf Lukas — подарочные карты и подписки</title>
 <link rel="preconnect" href="https://api.fontshare.com">
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
 <style>
 :root,[data-theme="light"]{
-  --bg:#f5f5f7;
-  --surface:#fff;
-  --surface2:#f0f0f3;
-  --border:#e5e5ea;
-  --text:#1d1d1f;
-  --text-muted:#6e6e73;
-  --text-faint:#aeaeb2;
-  --accent:#0071e3;
-  --accent-hover:#0077ed;
-  --accent-surface:#e8f0fb;
+  --bg:#f5f5f7;--surface:#fff;--surface2:#f0f0f3;--border:#e5e5ea;
+  --text:#1d1d1f;--text-muted:#6e6e73;--text-faint:#aeaeb2;
+  --accent:#0071e3;--accent-hover:#0077ed;--accent-surface:#e8f0fb;
   --green:#34c759;
-  --green-surface:#e8f8ec;
-  --radius-sm:8px;
-  --radius-md:12px;
-  --radius-lg:18px;
-  --radius-xl:24px;
-  --shadow-sm:0 2px 8px rgba(0,0,0,.06);
-  --shadow-md:0 8px 32px rgba(0,0,0,.09);
+  --radius-sm:8px;--radius-md:12px;--radius-lg:18px;--radius-xl:24px;
+  --shadow-sm:0 2px 8px rgba(0,0,0,.06);--shadow-md:0 8px 32px rgba(0,0,0,.09);
   --font:'Satoshi',Inter,-apple-system,sans-serif;
 }
 [data-theme="dark"]{
-  --bg:#0d0d0f;
-  --surface:#1c1c1e;
-  --surface2:#2c2c2e;
-  --border:#3a3a3c;
-  --text:#f5f5f7;
-  --text-muted:#98989d;
-  --text-faint:#48484a;
-  --accent:#3a9fff;
-  --accent-hover:#5aafff;
-  --accent-surface:#1c2e3e;
+  --bg:#0d0d0f;--surface:#1c1c1e;--surface2:#2c2c2e;--border:#3a3a3c;
+  --text:#f5f5f7;--text-muted:#98989d;--text-faint:#48484a;
+  --accent:#3a9fff;--accent-hover:#5aafff;--accent-surface:#1c2e3e;
   --green:#30d158;
-  --green-surface:#1a2e1e;
-  --shadow-sm:0 2px 8px rgba(0,0,0,.3);
-  --shadow-md:0 8px 32px rgba(0,0,0,.45);
+  --shadow-sm:0 2px 8px rgba(0,0,0,.3);--shadow-md:0 8px 32px rgba(0,0,0,.45);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth;font-size:16px}
+html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
 body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.5;min-height:100vh}
 a{text-decoration:none;color:inherit}
 button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 img{display:block;max-width:100%;height:auto}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
 .header{position:sticky;top:0;z-index:100;background:color-mix(in oklab,var(--bg) 88%,transparent);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--border)}
-.header-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:58px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.logo{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:800;letter-spacing:-.3px}
-.logo-icon{width:32px;height:32px;flex-shrink:0}
+.header-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:58px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:800;letter-spacing:-.3px;white-space:nowrap}
+.logo svg{width:32px;height:32px;flex-shrink:0}
 .header-nav{display:flex;gap:4px}
 .header-nav a{font-size:14px;color:var(--text-muted);padding:6px 10px;border-radius:8px;transition:.15s}
 .header-nav a:hover{color:var(--text);background:var(--surface2)}
-.header-right{display:flex;align-items:center;gap:10px}
+.header-right{display:flex;align-items:center;gap:8px}
+.icon-btn{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;border:1px solid var(--border);background:var(--surface);color:var(--text-muted);transition:.15s;flex-shrink:0}
+.icon-btn:hover{color:var(--text);background:var(--surface2)}
+.btn-login{display:flex;align-items:center;gap:6px;border:1px solid var(--border);background:var(--surface);font-size:14px;font-weight:600;padding:7px 14px;border-radius:22px;transition:.15s;color:var(--text)}
+.btn-login:hover{background:var(--surface2)}
+.btn-login svg{width:15px;height:15px}
 .btn-cart{display:flex;align-items:center;gap:6px;background:var(--accent);color:#fff;font-size:14px;font-weight:600;padding:8px 14px;border-radius:22px;transition:.15s}
 .btn-cart:hover{background:var(--accent-hover)}
 .btn-cart svg{width:16px;height:16px}
-.icon-btn{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;border:1px solid var(--border);background:var(--surface);color:var(--text-muted);transition:.15s;flex-shrink:0}
-.icon-btn:hover{color:var(--text);background:var(--surface2)}
+.search-overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);align-items:flex-start;justify-content:center;padding-top:100px}
+.search-overlay.open{display:flex}
+.search-box{width:min(640px,calc(100% - 32px));background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-md)}
+.search-input-wrap{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--border)}
+.search-input-wrap svg{color:var(--text-muted);flex-shrink:0}
+.search-input{flex:1;background:none;border:none;outline:none;font-size:17px;font-family:var(--font);color:var(--text)}
+.search-input::placeholder{color:var(--text-faint)}
+.search-close{color:var(--text-muted);font-size:13px;font-weight:600;padding:6px 10px;border-radius:8px;transition:.15s}
+.search-close:hover{color:var(--text);background:var(--surface2)}
+.search-results{padding:12px 0;max-height:360px;overflow-y:auto}
+.search-result-item{display:flex;align-items:center;gap:14px;padding:10px 20px;cursor:pointer;transition:.12s}
+.search-result-item:hover{background:var(--surface2)}
+.sr-logo{width:40px;height:40px;border-radius:12px;object-fit:contain;flex-shrink:0;padding:6px}
+.sr-name{font-size:15px;font-weight:700}
+.sr-desc{font-size:13px;color:var(--text-muted)}
+.sr-price{font-size:14px;font-weight:800;color:var(--accent);margin-left:auto;white-space:nowrap}
+.search-empty{padding:32px 20px;text-align:center;color:var(--text-muted);font-size:15px}
+.search-hint{padding:10px 20px 4px;font-size:12px;font-weight:600;color:var(--text-faint);text-transform:uppercase;letter-spacing:.06em}
 .hero{max-width:1100px;margin:0 auto;padding:52px 20px 0}
 .hero-top{text-align:center;margin-bottom:40px}
 .hero-top h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;letter-spacing:-.5px;line-height:1.1;margin-bottom:16px}
-.trust-row{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-bottom:0}
+.trust-row{display:flex;justify-content:center;flex-wrap:wrap;gap:10px}
 .trust-chip{display:inline-flex;align-items:center;gap:7px;padding:8px 14px;background:var(--surface);border:1px solid var(--border);border-radius:22px;font-size:13px;font-weight:500;color:var(--text-muted)}
 .trust-chip svg{width:15px;height:15px;flex-shrink:0;color:var(--green)}
 .trust-chip strong{color:var(--text)}
 .badge-rating{color:var(--accent)}
-.categories-wrap{position:relative;margin-top:36px}
+.categories-wrap{margin-top:36px}
 .categories-scroll{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;-ms-overflow-style:none}
 .categories-scroll::-webkit-scrollbar{display:none}
 .cat-item{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px 16px;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius-lg);cursor:pointer;transition:.15s;min-width:80px}
@@ -85,7 +85,7 @@ img{display:block;max-width:100%;height:auto}
 .section-head h2{font-size:22px;font-weight:800;letter-spacing:-.3px}
 .section-head a{font-size:14px;color:var(--accent);font-weight:500}
 .hits-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
-.product-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px;display:flex;flex-direction:column;gap:10px;transition:.2s;position:relative;overflow:hidden}
+.product-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px;display:flex;flex-direction:column;gap:10px;transition:.2s;position:relative}
 .product-card:hover{box-shadow:var(--shadow-md);border-color:color-mix(in oklab,var(--accent) 30%,var(--border));transform:translateY(-2px)}
 .product-card-logo{width:52px;height:52px;border-radius:14px;object-fit:contain;background:var(--surface2);padding:6px}
 .product-card-logo-wrap{position:relative;width:max-content}
@@ -122,13 +122,6 @@ img{display:block;max-width:100%;height:auto}
 .ref-chip svg{width:18px;height:18px}
 .btn-ref{background:var(--accent);color:#fff;font-size:14px;font-weight:700;padding:12px 22px;border-radius:22px;transition:.15s;white-space:nowrap}
 .btn-ref:hover{background:var(--accent-hover)}
-.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
-.blog-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;display:flex;flex-direction:column;gap:10px;transition:.15s;cursor:pointer}
-.blog-card:hover{box-shadow:var(--shadow-sm);border-color:color-mix(in oklab,var(--accent) 20%,var(--border))}
-.blog-date{font-size:12px;color:var(--text-faint);font-weight:500}
-.blog-title{font-size:15px;font-weight:700;line-height:1.35}
-.blog-excerpt{font-size:13px;color:var(--text-muted);line-height:1.5}
-.blog-read{font-size:13px;color:var(--accent);font-weight:600;margin-top:auto}
 .footer{max-width:1100px;margin:52px auto 0;padding:32px 20px 48px;border-top:1px solid var(--border)}
 .footer-inner{display:flex;justify-content:space-between;align-items:flex-start;gap:32px;flex-wrap:wrap}
 .footer-brand{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:800;margin-bottom:8px}
@@ -139,49 +132,64 @@ img{display:block;max-width:100%;height:auto}
 .footer-copy{font-size:12px;color:var(--text-faint);margin-top:20px}
 @media(max-width:720px){
   .header-nav{display:none}
+  .btn-login span{display:none}
   .hero-top h1{font-size:2rem}
   .trust-row{gap:8px}
   .hits-grid{grid-template-columns:repeat(2,1fr)}
   .catalog-grid{grid-template-columns:1fr}
   .referral-inner{flex-direction:column;gap:20px}
-  .referral-highlights{flex-direction:column;gap:12px}
-  .blog-grid{grid-template-columns:1fr}
   .footer-inner{flex-direction:column;gap:24px}
-  .footer-links{gap:12px}
 }
-@media(max-width:400px){
-  .hits-grid{grid-template-columns:1fr}
-}
+@media(max-width:400px){.hits-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
+
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-box">
+    <div class="search-input-wrap">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input class="search-input" id="searchInput" type="text" placeholder="Поиск подписок и карт...">
+      <button class="search-close" id="searchClose">Закрыть</button>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
 <header class="header">
   <div class="header-inner">
     <a href="#" class="logo">
-      <svg class="logo-icon" viewBox="0 0 32 32" fill="none">
+      <svg viewBox="0 0 32 32" fill="none">
         <rect width="32" height="32" rx="9" fill="var(--accent)"/>
-        <path d="M10 16.5c2-4 10-4 12 0" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
-        <circle cx="12" cy="12.5" r="1.8" fill="#fff"/>
-        <circle cx="20" cy="12.5" r="1.8" fill="#fff"/>
-        <path d="M21 21H11l1-3h8l1 3z" fill="#fff" opacity=".7"/>
+        <path d="M9 20c2.5-5.5 11.5-5.5 14 0" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="12" cy="13" r="2" fill="#fff"/>
+        <circle cx="20" cy="13" r="2" fill="#fff"/>
+        <path d="M21 22.5H11l1-2.5h8l1 2.5z" fill="#fff" opacity=".6"/>
       </svg>
-      Подписка
+      Graf Lukas
     </a>
     <nav class="header-nav">
       <a href="#catalog">Каталог</a>
-      <a href="#blog">Блог</a>
     </nav>
     <div class="header-right">
+      <button class="icon-btn" id="searchOpen" aria-label="Поиск">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
       <button class="icon-btn" data-theme-toggle aria-label="Сменить тему">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
-      <button class="btn-cart">
+      <button class="btn-login">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>Войти</span>
+      </button>
+      <button class="btn-cart" id="cartBtn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
         Корзина
       </button>
     </div>
   </div>
 </header>
+
 <main>
   <section class="hero">
     <div class="hero-top">
@@ -210,6 +218,7 @@ img{display:block;max-width:100%;height:auto}
       </div>
     </div>
   </section>
+
   <section class="section">
     <div class="section-head"><h2>🔥 Хиты продаж</h2><a href="#catalog">Смотреть все →</a></div>
     <div class="hits-grid">
@@ -251,6 +260,7 @@ img{display:block;max-width:100%;height:auto}
       </article>
     </div>
   </section>
+
   <div class="referral-block">
     <div class="referral-inner">
       <div class="referral-text">
@@ -264,6 +274,7 @@ img{display:block;max-width:100%;height:auto}
       <button class="btn-ref">Получить ссылку</button>
     </div>
   </div>
+
   <section class="section" id="catalog">
     <div class="section-head"><h2>Каталог</h2></div>
     <div class="catalog-grid">
@@ -281,30 +292,24 @@ img{display:block;max-width:100%;height:auto}
       <a href="#" class="catalog-card"><img class="catalog-logo" src="https://cdn.simpleicons.org/googleplay/414141" alt="Google Play" width="52" height="52" loading="lazy" style="background:#f5f5f5"><div class="catalog-info"><div class="catalog-name">Google Play</div><div class="catalog-desc">Подарочные карты Google Play</div></div><div class="catalog-price">11 товаров</div><svg class="catalog-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg></a>
     </div>
   </section>
-  <section class="section" id="blog">
-    <div class="section-head"><h2>Из блога</h2><a href="#">Все статьи →</a></div>
-    <div class="blog-grid">
-      <article class="blog-card"><div class="blog-date">Июнь 2026</div><div class="blog-title">Предзаказ GTA 6 стартовал: цена, версии для PS5 и Xbox</div><div class="blog-excerpt">Предзаказ GTA 6 на PS5 и Xbox Series X|S: дата релиза, издания, цена и как оплатить игру через PlayStation Store или Xbox Store.</div><div class="blog-read">Читать →</div></article>
-      <article class="blog-card"><div class="blog-date">10 июня 2026</div><div class="blog-title">Roblox снова доступен в России: разблокировка 10 июня 2026</div><div class="blog-excerpt">Roblox снова доступен в России после разблокировки. Что изменилось и как купить Robux российской картой.</div><div class="blog-read">Читать →</div></article>
-      <article class="blog-card"><div class="blog-date">Июнь 2026</div><div class="blog-title">Что такое eSIM и как она работает в России</div><div class="blog-excerpt">Разбираем, что такое eSIM, как она работает, какие телефоны её поддерживают и работают ли зарубежные eSIM в России.</div><div class="blog-read">Читать →</div></article>
-    </div>
-  </section>
 </main>
+
 <footer class="footer">
   <div class="footer-inner">
     <div>
-      <div class="footer-brand"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="9" fill="var(--accent)"/><path d="M10 16.5c2-4 10-4 12 0" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/><circle cx="12" cy="12.5" r="1.8" fill="#fff"/><circle cx="20" cy="12.5" r="1.8" fill="#fff"/></svg>Подписка</div>
+      <div class="footer-brand"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="9" fill="var(--accent)"/><path d="M9 20c2.5-5.5 11.5-5.5 14 0" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/><circle cx="12" cy="13" r="2" fill="#fff"/><circle cx="20" cy="13" r="2" fill="#fff"/></svg>Graf Lukas</div>
       <div class="footer-tagline">Подарочные карты и цифровые подписки с мгновенной доставкой</div>
     </div>
-    <nav class="footer-links"><a href="#catalog">Каталог</a><a href="#blog">Блог</a><a href="#">Поддержка</a><a href="#">Политика конфиденциальности</a></nav>
+    <nav class="footer-links"><a href="#catalog">Каталог</a><a href="#">Поддержка</a><a href="#">Политика конфиденциальности</a></nav>
   </div>
-  <div class="footer-copy">© 2026 Подписка. Все права защищены.</div>
+  <div class="footer-copy">© 2026 Graf Lukas. Все права защищены.</div>
 </footer>
+
 <script>
 (function(){
   const toggle=document.querySelector('[data-theme-toggle]');
   const root=document.documentElement;
-  const setTheme=(t)=>{
+  const setTheme=t=>{
     root.setAttribute('data-theme',t);
     toggle.innerHTML=t==='dark'
       ?'<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
@@ -322,8 +327,41 @@ img{display:block;max-width:100%;height:auto}
   document.querySelectorAll('.btn-buy').forEach(btn=>{
     btn.addEventListener('click',()=>{
       count++;
-      document.querySelector('.btn-cart').innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Корзина · ${count}`;
+      document.getElementById('cartBtn').innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Корзина · ${count}`;
     });
+  });
+  const products=[
+    {name:'Steam',desc:'Пополнение кошелька',price:'0% комиссии',logo:'https://cdn.simpleicons.org/steam/fff',bg:'#1b2838'},
+    {name:'PlayStation Store',desc:'Подарочная карта · США',price:'от 519 ₽',logo:'https://cdn.simpleicons.org/playstation/003791',bg:'#f0f4ff'},
+    {name:'Spotify Premium',desc:'Индивидуальная · 12 месяцев',price:'от 599 ₽',logo:'https://cdn.simpleicons.org/spotify/1db954',bg:'#f0fff4'},
+    {name:'Apple iTunes',desc:'Подарочная карта · Турция',price:'от 99 ₽',logo:'https://cdn.simpleicons.org/apple/555',bg:'#f5f5f5'},
+    {name:'Roblox',desc:'Robux · 400 / 800 / 1700',price:'от 229 ₽',logo:'https://cdn.simpleicons.org/roblox/e00',bg:'#fff1f1'},
+    {name:'Netflix',desc:'Подарочная карта · Турция',price:'от 189 ₽',logo:'https://cdn.simpleicons.org/netflix/e50914',bg:'#111'},
+    {name:'Nintendo eShop',desc:'Подарочная карта',price:'от 899 ₽',logo:'https://cdn.simpleicons.org/nintendo/e4000f',bg:'#fff1f1'},
+    {name:'Xbox Gift Card',desc:'Подарочная карта · Турция',price:'от 79 ₽',logo:'https://cdn.simpleicons.org/xbox/107c10',bg:'#f0fff0'},
+    {name:'Telegram Stars',desc:'По username',price:'от 79 ₽',logo:'https://cdn.simpleicons.org/telegram/2ca5e0',bg:'#e8f4fb'},
+    {name:'Telegram Premium',desc:'Подписка по username',price:'от 1 169 ₽',logo:'https://cdn.simpleicons.org/telegram/2ca5e0',bg:'#e8f4fb'},
+    {name:'Valorant VP',desc:'Подарочные карты',price:'11 товаров',logo:'https://cdn.simpleicons.org/valorant/ff4655',bg:'#111'},
+    {name:'Google Play',desc:'Подарочные карты',price:'11 товаров',logo:'https://cdn.simpleicons.org/googleplay/414141',bg:'#f5f5f5'},
+    {name:'Battle.net',desc:'Пополнение аккаунта',price:'от 299 ₽',logo:'https://cdn.simpleicons.org/battlenet/148eff',bg:'#111'},
+  ];
+  const overlay=document.getElementById('searchOverlay');
+  const input=document.getElementById('searchInput');
+  const results=document.getElementById('searchResults');
+  const render=(list,hint)=>{
+    if(!list.length){results.innerHTML='<div class="search-empty">Ничего не найдено</div>';return;}
+    results.innerHTML=`<div class="search-hint">${hint}</div>`+list.map(p=>`<div class="search-result-item"><img class="sr-logo" src="${p.logo}" alt="${p.name}" width="40" height="40" style="background:${p.bg}"><div><div class="sr-name">${p.name}</div><div class="sr-desc">${p.desc}</div></div><div class="sr-price">${p.price}</div></div>`).join('');
+  };
+  const open=()=>{overlay.classList.add('open');input.value='';render(products.slice(0,6),'Популярные');setTimeout(()=>input.focus(),50);};
+  const close=()=>{overlay.classList.remove('open');};
+  document.getElementById('searchOpen').addEventListener('click',open);
+  document.getElementById('searchClose').addEventListener('click',close);
+  overlay.addEventListener('click',e=>{if(e.target===overlay)close();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')close();if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();open();}});
+  input.addEventListener('input',()=>{
+    const q=input.value.trim().toLowerCase();
+    if(!q){render(products.slice(0,6),'Популярные');return;}
+    render(products.filter(p=>p.name.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q)),`Результаты для "${input.value.trim()}"`);
   });
 })();
 </script>
