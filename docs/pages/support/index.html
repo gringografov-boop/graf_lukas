@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Поддержка — Graf Lukas</title>
+
+  <meta name="description" content="Поддержка Graf Lukas: FAQ, контакты и форма обращения по заказам, оплате и цифровым товарам.">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#171a21" media="(prefers-color-scheme: dark)">
+
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,800,900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../assets/css/tokens.css">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/layout.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/pages/support.css">
+
+  <script src="../../assets/js/theme.js"></script>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="header">
+      <div class="container header__inner">
+        <a href="../../index.html" class="logo" aria-label="Graf Lukas — на главную">
+          <svg class="logo__mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+            <path d="M16 3 4 8.5 16 14l12-5.5L16 3Z"></path>
+            <path d="M4 15.5 16 21l12-5.5"></path>
+            <path d="M4 22.5 16 28l12-5.5"></path>
+          </svg>
+          <span class="logo__text">Graf Lukas</span>
+        </a>
+
+        <nav class="nav" aria-label="Основная навигация">
+          <a href="../../index.html">Главная</a>
+          <a href="../catalog/index.html">Каталог</a>
+          <a href="./index.html">Поддержка</a>
+        </nav>
+
+        <div class="header__actions">
+          <button class="icon-button" id="themeToggleBtn" type="button" aria-label="Переключить тему"></button>
+
+          <button class="icon-button" type="button" data-open-search aria-label="Открыть поиск">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="m20 20-3.5-3.5"></path>
+            </svg>
+          </button>
+
+          <a class="button button--ghost" href="../account/index.html">Аккаунт</a>
+
+          <a class="button button--secondary" href="../checkout/index.html">
+            Корзина
+            <span class="product-card__badge" data-cart-count hidden>0</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="support-page">
+      <div class="container">
+        <nav class="support-breadcrumbs" aria-label="Хлебные крошки">
+          <span><a href="../../index.html">Главная</a></span>
+          <span>/</span>
+          <span aria-current="page">Поддержка</span>
+        </nav>
+
+        <section class="support-hero" aria-labelledby="supportHeroTitle">
+          <div class="support-hero__inner">
+            <span class="eyebrow">Помощь и связь</span>
+            <h1 class="support-hero__title" id="supportHeroTitle">Поддержка покупателей</h1>
+            <p class="support-hero__text">
+              Проверь частые вопросы, выбери удобный канал связи и отправь обращение по заказу, оплате или активации цифрового товара.
+            </p>
+          </div>
+        </section>
+
+        <div class="support-layout">
+          <section class="support-main">
+            <article class="support-faq" aria-labelledby="supportFaqTitle">
+              <div class="support-block__head">
+                <h2 class="support-block__title" id="supportFaqTitle">Частые вопросы</h2>
+                <p class="support-block__text">
+                  Сначала посмотри быстрые ответы — это поможет решить типовые вопросы без ожидания.
+                </p>
+              </div>
+
+              <div class="support-faq-list" data-support-faq>
+                <!-- FAQ render -->
+              </div>
+            </article>
+
+            <article class="support-form" aria-labelledby="supportFormTitle">
+              <div class="support-block__head">
+                <h2 class="support-block__title" id="supportFormTitle">Отправить обращение</h2>
+                <p class="support-block__text">
+                  Опиши вопрос кратко и по делу. Для заказов лучше указывать email, Telegram и номер заказа.
+                </p>
+              </div>
+
+              <div class="support-success" id="supportSuccess" hidden></div>
+
+              <form id="supportForm" novalidate>
+                <div class="support-form__grid">
+                  <div class="support-field">
+                    <label class="support-label" for="supportName">Имя</label>
+                    <input
+                      class="support-input"
+                      id="supportName"
+                      name="name"
+                      type="text"
+                      placeholder="Как к тебе обращаться"
+                      required
+                    >
+                  </div>
+
+                  <div class="support-field">
+                    <label class="support-label" for="supportEmail">Email</label>
+                    <input
+                      class="support-input"
+                      id="supportEmail"
+                      name="email"
+                      type="email"
+                      placeholder="you@example.com"
+                      required
+                    >
+                  </div>
+
+                  <div class="support-field">
+                    <label class="support-label" for="supportTelegram">Telegram</label>
+                    <input
+                      class="support-input"
+                      id="supportTelegram"
+                      name="telegram"
+                      type="text"
+                      placeholder="@username"
+                    >
+                  </div>
+
+                  <div class="support-field">
+                    <label class="support-label" for="supportTopic">Тема обращения</label>
+                    <select class="support-select" id="supportTopic" name="topic" required>
+                      <option value="order">Проблема с заказом</option>
+                      <option value="payment">Вопрос по оплате</option>
+                      <option value="activation">Активация товара</option>
+                      <option value="refund">Возврат / замена</option>
+                      <option value="other">Другой вопрос</option>
+                    </select>
+                  </div>
+
+                  <div class="support-field support-field--full">
+                    <label class="support-label" for="supportOrder">Номер заказа</label>
+                    <input
+                      class="support-input"
+                      id="supportOrder"
+                      name="order"
+                      type="text"
+                      placeholder="Например: GL-1042"
+                      aria-describedby="supportOrderHint"
+                    >
+                    <p class="support-form__note" id="supportOrderHint">
+                      Если вопрос связан с покупкой, укажи номер заказа для быстрой проверки.
+                    </p>
+                  </div>
+
+                  <div class="support-field support-field--full">
+                    <label class="support-label" for="supportMessage">Сообщение</label>
+                    <textarea
+                      class="support-textarea"
+                      id="supportMessage"
+                      name="message"
+                      placeholder="Опиши проблему, что уже пробовал и какой результат получил"
+                      required
+                    ></textarea>
+                  </div>
+                </div>
+
+                <div class="support-form__actions">
+                  <button class="button button--primary" type="submit">Отправить обращение</button>
+                  <a class="button button--ghost" href="../account/index.html">Открыть аккаунт</a>
+                </div>
+              </form>
+            </article>
+          </section>
+
+          <aside class="support-sidebar">
+            <article class="support-card" aria-labelledby="supportContactsTitle">
+              <h2 class="support-card__title" id="supportContactsTitle">Контакты</h2>
+
+              <address class="support-contact-list">
+                <div class="support-contact-item">
+                  <div class="support-contact-item__label">Email</div>
+                  <a class="support-contact-item__value" href="mailto:support@graflukas.store">support@graflukas.store</a>
+                  <div class="support-contact-item__hint">Основной канал по заказам и оплате</div>
+                </div>
+
+                <div class="support-contact-item">
+                  <div class="support-contact-item__label">Telegram</div>
+                  <a class="support-contact-item__value" href="#" target="_blank" rel="noopener noreferrer">@graf_lukas_support</a>
+                  <div class="support-contact-item__hint">Быстрые уточнения и связь по активным заказам</div>
+                </div>
+
+                <div class="support-contact-item">
+                  <div class="support-contact-item__label">Режим ответа</div>
+                  <div class="support-contact-item__value">Ежедневно, 10:00–22:00 МСК</div>
+                  <div class="support-contact-item__hint">По срочным вопросам лучше писать в Telegram</div>
+                </div>
+              </address>
+            </article>
+
+            <article class="support-card" aria-labelledby="supportTipsTitle">
+              <h2 class="support-card__title" id="supportTipsTitle">Что ускоряет ответ</h2>
+              <p class="support-card__text">
+                Чтобы не было лишних уточнений, укажи номер заказа, сервис, способ оплаты и коротко опиши, где именно возникла проблема.
+              </p>
+              <p class="support-card__meta">
+                Чем точнее входные данные, тем быстрее можно проверить выдачу и предложить решение.
+              </p>
+            </article>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div>
+          <div class="footer__brand">Graf Lukas</div>
+          <p class="footer__text">
+            Магазин цифровых подписок, игровых пополнений и сервисов с быстрой выдачей.
+          </p>
+        </div>
+
+        <nav class="footer__nav" aria-label="Навигация в подвале">
+          <a href="../../index.html">Главная</a>
+          <a href="../catalog/index.html">Каталог</a>
+          <a href="./index.html">Поддержка</a>
+          <a href="../account/index.html">Аккаунт</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+
+  <div class="search-modal" id="searchModal" aria-hidden="true">
+    <div class="search-modal__backdrop" data-search-backdrop></div>
+
+    <div class="search-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+      <div class="search-modal__top">
+        <svg class="search-modal__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle>
+          <path d="m20 20-3.5-3.5"></path>
+        </svg>
+
+        <label class="sr-only" for="searchInput">Поиск товаров</label>
+        <input
+          class="search-modal__input"
+          id="searchInput"
+          type="search"
+          placeholder="Найти Steam, Spotify, Telegram Premium..."
+          autocomplete="off"
+        >
+
+        <button class="search-modal__close" id="searchCloseBtn" type="button" aria-label="Закрыть поиск">
+          Esc
+        </button>
+      </div>
+
+      <div class="search-modal__results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <script src="../../assets/data/products.js"></script>
+  <script src="../../assets/data/categories.js"></script>
+  <script src="../../assets/data/faq.js"></script>
+
+  <script src="../../assets/js/utils.js"></script>
+  <script src="../../assets/js/render.js"></script>
+  <script src="../../assets/js/cart.js"></script>
+  <script src="../../assets/js/search.js"></script>
+  <script src="../../assets/js/pages/support.js"></script>
+</body>
+</html>

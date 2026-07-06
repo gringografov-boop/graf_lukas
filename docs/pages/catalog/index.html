@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Каталог — Graf Lukas</title>
+
+  <meta name="description" content="Каталог цифровых подписок, игр и пополнений: Steam, Spotify, Netflix, Telegram Premium, PlayStation, Xbox и другие сервисы.">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#171a21" media="(prefers-color-scheme: dark)">
+
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,800,900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../assets/css/tokens.css">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/layout.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/pages/catalog.css">
+
+  <script src="../../assets/js/theme.js"></script>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="header">
+      <div class="container header__inner">
+        <a href="../../index.html" class="logo" aria-label="Graf Lukas — на главную">
+          <svg class="logo__mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+            <path d="M16 3 4 8.5 16 14l12-5.5L16 3Z"></path>
+            <path d="M4 15.5 16 21l12-5.5"></path>
+            <path d="M4 22.5 16 28l12-5.5"></path>
+          </svg>
+          <span class="logo__text">Graf Lukas</span>
+        </a>
+
+        <nav class="nav" aria-label="Основная навигация">
+          <a href="../../index.html">Главная</a>
+          <a href="./index.html">Каталог</a>
+          <a href="../support/index.html">Поддержка</a>
+        </nav>
+
+        <div class="header__actions">
+          <button class="icon-button" id="themeToggleBtn" type="button" aria-label="Переключить тему"></button>
+
+          <button class="icon-button" type="button" data-open-search aria-label="Открыть поиск">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="m20 20-3.5-3.5"></path>
+            </svg>
+          </button>
+
+          <a class="button button--ghost" href="../account/index.html">Аккаунт</a>
+
+          <a class="button button--secondary" href="../checkout/index.html">
+            Корзина
+            <span class="product-card__badge" data-cart-count hidden>0</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="catalog-page">
+      <div class="container">
+        <nav class="catalog-breadcrumbs" aria-label="Хлебные крошки">
+          <a href="../../index.html">Главная</a>
+          <span>/</span>
+          <span aria-current="page">Каталог</span>
+        </nav>
+
+        <section class="catalog-hero" aria-labelledby="catalogTitle">
+          <div class="catalog-hero__inner">
+            <span class="eyebrow catalog-hero__eyebrow">Каталог</span>
+            <h1 class="catalog-hero__title" id="catalogTitle" data-catalog-title>Каталог подписок</h1>
+            <p class="catalog-hero__text" data-catalog-text>
+              Выбирай игры, пополнения и цифровые сервисы по категориям.
+            </p>
+          </div>
+        </section>
+
+        <section class="catalog-toolbar" aria-label="Фильтры каталога">
+          <div class="catalog-toolbar__top">
+            <div class="catalog-toolbar__meta">
+              <div class="catalog-count">
+                Найдено товаров:
+                <span data-catalog-count>0</span>
+              </div>
+              <div class="catalog-current" data-catalog-current>
+                Показаны все категории
+              </div>
+            </div>
+
+            <button type="button" class="button button--secondary" data-open-search>
+              Быстрый поиск
+            </button>
+          </div>
+
+          <div class="catalog-filters" id="catalogFilters" aria-label="Категории товаров">
+            <!-- category chips -->
+          </div>
+        </section>
+
+        <div class="catalog-layout">
+          <section class="catalog-panel" aria-labelledby="catalogGridTitle">
+            <h2 class="catalog-panel__title" id="catalogGridTitle">Товары</h2>
+            <p class="catalog-panel__text">
+              Все товары обновляются в одном каталоге, а фильтрация идёт по выбранной категории.
+            </p>
+          </section>
+
+          <section aria-label="Список товаров">
+            <div class="catalog-empty" id="catalogEmpty" hidden>
+              <div class="catalog-empty__title">Товары не найдены</div>
+              <div class="catalog-empty__text">
+                Попробуй выбрать другую категорию или открой полный каталог.
+              </div>
+            </div>
+
+            <div class="catalog-grid" id="catalogProducts">
+              <!-- products render here -->
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div>
+          <div class="footer__brand">Graf Lukas</div>
+          <p class="footer__text">
+            Магазин цифровых подписок, игровых пополнений и сервисов с быстрой выдачей.
+          </p>
+        </div>
+
+        <nav class="footer__nav" aria-label="Навигация в подвале">
+          <a href="../../index.html">Главная</a>
+          <a href="./index.html">Каталог</a>
+          <a href="../support/index.html">Поддержка</a>
+          <a href="../account/index.html">Аккаунт</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+
+  <div class="search-modal" id="searchModal" aria-hidden="true">
+    <div class="search-modal__backdrop" data-search-backdrop></div>
+
+    <div class="search-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+      <div class="search-modal__top">
+        <svg class="search-modal__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle>
+          <path d="m20 20-3.5-3.5"></path>
+        </svg>
+
+        <label class="sr-only" for="searchInput">Поиск товаров</label>
+        <input
+          class="search-modal__input"
+          id="searchInput"
+          type="search"
+          placeholder="Найти Steam, Spotify, Telegram Premium..."
+          autocomplete="off"
+        >
+
+        <button class="search-modal__close" id="searchCloseBtn" type="button" aria-label="Закрыть поиск">
+          Esc
+        </button>
+      </div>
+
+      <div class="search-modal__results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <script src="../../assets/data/products.js"></script>
+  <script src="../../assets/data/categories.js"></script>
+
+  <script src="../../assets/js/utils.js"></script>
+  <script src="../../assets/js/render.js"></script>
+  <script src="../../assets/js/cart.js"></script>
+  <script src="../../assets/js/search.js"></script>
+  <script src="../../assets/js/pages/catalog.js"></script>
+</body>
+</html>

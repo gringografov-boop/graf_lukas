@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Товар — Graf Lukas</title>
+
+  <meta name="description" content="Страница товара Graf Lukas: описание подписки, цена, детали активации и похожие товары.">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#171a21" media="(prefers-color-scheme: dark)">
+
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,800,900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../assets/css/tokens.css">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/layout.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/pages/product.css">
+
+  <script src="../../assets/js/theme.js"></script>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="header">
+      <div class="container header__inner">
+        <a href="../../index.html" class="logo" aria-label="Graf Lukas — на главную">
+          <svg class="logo__mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+            <path d="M16 3 4 8.5 16 14l12-5.5L16 3Z"></path>
+            <path d="M4 15.5 16 21l12-5.5"></path>
+            <path d="M4 22.5 16 28l12-5.5"></path>
+          </svg>
+          <span class="logo__text">Graf Lukas</span>
+        </a>
+
+        <nav class="nav" aria-label="Основная навигация">
+          <a href="../../index.html">Главная</a>
+          <a href="../catalog/index.html">Каталог</a>
+          <a href="../support/index.html">Поддержка</a>
+        </nav>
+
+        <div class="header__actions">
+          <button class="icon-button" id="themeToggleBtn" type="button" aria-label="Переключить тему"></button>
+
+          <button class="icon-button" type="button" data-open-search aria-label="Открыть поиск">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="m20 20-3.5-3.5"></path>
+            </svg>
+          </button>
+
+          <a class="button button--ghost" href="../account/index.html">Аккаунт</a>
+
+          <a class="button button--secondary" href="../checkout/index.html">
+            Корзина
+            <span class="product-card__badge" data-cart-count hidden>0</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="product-page">
+      <div class="container">
+        <nav class="product-breadcrumbs" aria-label="Хлебные крошки">
+          <ol role="list" class="cluster">
+            <li><a href="../../index.html">Главная</a></li>
+            <li>/</li>
+            <li><a href="../catalog/index.html">Каталог</a></li>
+            <li>/</li>
+            <li aria-current="page" data-product-breadcrumb-current>Товар</li>
+          </ol>
+        </nav>
+
+        <div class="product-layout">
+          <section class="stack-lg">
+            <article class="product-media" aria-label="Изображение товара">
+              <div class="product-media__stage" data-product-image>
+                <!-- image -->
+              </div>
+            </article>
+
+            <article class="product-summary">
+              <div class="product-summary__top">
+                <span class="eyebrow product-summary__eyebrow" data-product-badge>Товар</span>
+                <h1 class="product-summary__title" data-product-title>Название товара</h1>
+                <p class="product-summary__description" data-product-description>
+                  Короткое описание товара.
+                </p>
+              </div>
+
+              <div class="product-summary__meta">
+                <span class="product-meta-chip" data-product-category>Категория</span>
+                <span class="product-meta-chip" data-product-note>Быстрая выдача</span>
+              </div>
+
+              <div class="product-summary__grid">
+                <div class="product-feature">
+                  <div class="product-feature__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="product-feature__title">Проверенный товар</div>
+                    <div class="product-feature__text">Описание и выдача уже подготовлены для покупки.</div>
+                  </div>
+                </div>
+
+                <div class="product-feature">
+                  <div class="product-feature__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 8v4l3 3"></path>
+                      <circle cx="12" cy="12" r="9"></circle>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="product-feature__title">Быстрая активация</div>
+                    <div class="product-feature__text">После оплаты данные приходят без долгого ожидания.</div>
+                  </div>
+                </div>
+
+                <div class="product-feature">
+                  <div class="product-feature__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="product-feature__title">Поддержка по заказу</div>
+                    <div class="product-feature__text">Если что-то не так, покупатель видит понятный сценарий решения.</div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-details">
+              <h2 class="product-details__title" data-product-page-title>Описание товара</h2>
+              <p class="product-summary__description" data-product-page-text>
+                Подробности о товаре и формате активации.
+              </p>
+
+              <div data-product-details>
+                <!-- filled by JS -->
+              </div>
+            </article>
+          </section>
+
+          <aside class="product-side">
+            <section class="product-panel" aria-label="Покупка товара">
+              <div class="product-price">
+                <div class="product-price__label">Цена</div>
+                <div class="product-price__value" data-product-price>0 ₽</div>
+                <div class="product-price__note">Моментальная цифровая выдача</div>
+              </div>
+
+              <div class="product-actions">
+                <button
+                  class="button button--primary"
+                  type="button"
+                  data-product-add
+                >
+                  Добавить в корзину
+                </button>
+
+                <a
+                  class="button button--secondary"
+                  href="../checkout/index.html"
+                  data-product-buy
+                >
+                  Купить сейчас
+                </a>
+              </div>
+
+              <div class="product-status">
+                <div class="product-status__row">
+                  <span>Наличие</span>
+                  <strong>В наличии</strong>
+                </div>
+                <div class="product-status__row">
+                  <span>Формат</span>
+                  <strong>Цифровой товар</strong>
+                </div>
+                <div class="product-status__row">
+                  <span>Получение</span>
+                  <strong>После оплаты</strong>
+                </div>
+              </div>
+
+              <p class="product-panel__hint">
+                После оформления заказа данные товара и инструкция по активации будут доступны в личном кабинете.
+              </p>
+            </section>
+
+            <section class="product-similar" aria-labelledby="similarProductsTitle">
+              <h2 class="product-similar__title" id="similarProductsTitle">Похожие товары</h2>
+              <div class="product-similar__grid" data-similar-products>
+                <!-- similar products -->
+              </div>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div>
+          <div class="footer__brand">Graf Lukas</div>
+          <p class="footer__text">
+            Магазин цифровых подписок, игровых пополнений и сервисов с быстрой выдачей.
+          </p>
+        </div>
+
+        <nav class="footer__nav" aria-label="Навигация в подвале">
+          <a href="../../index.html">Главная</a>
+          <a href="../catalog/index.html">Каталог</a>
+          <a href="../support/index.html">Поддержка</a>
+          <a href="../account/index.html">Аккаунт</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+
+  <div class="search-modal" id="searchModal" aria-hidden="true">
+    <div class="search-modal__backdrop" data-search-backdrop></div>
+
+    <div class="search-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+      <div class="search-modal__top">
+        <svg class="search-modal__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle>
+          <path d="m20 20-3.5-3.5"></path>
+        </svg>
+
+        <label class="sr-only" for="searchInput">Поиск товаров</label>
+        <input
+          class="search-modal__input"
+          id="searchInput"
+          type="search"
+          placeholder="Найти Steam, Spotify, Telegram Premium..."
+          autocomplete="off"
+        >
+
+        <button class="search-modal__close" id="searchCloseBtn" type="button" aria-label="Закрыть поиск">
+          Esc
+        </button>
+      </div>
+
+      <div class="search-modal__results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <script src="../../assets/data/products.js"></script>
+  <script src="../../assets/data/categories.js"></script>
+
+  <script src="../../assets/js/utils.js"></script>
+  <script src="../../assets/js/render.js"></script>
+  <script src="../../assets/js/cart.js"></script>
+  <script src="../../assets/js/search.js"></script>
+  <script src="../../assets/js/pages/product.js"></script>
+</body>
+</html>

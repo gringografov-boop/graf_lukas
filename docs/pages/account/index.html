@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Аккаунт — Graf Lukas</title>
+
+  <meta name="description" content="Личный кабинет Graf Lukas: история заказов, активные покупки и быстрые действия по цифровым товарам.">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#171a21" media="(prefers-color-scheme: dark)">
+
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,800,900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../assets/css/tokens.css">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/layout.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/pages/account.css">
+
+  <script src="../../assets/js/theme.js"></script>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="header">
+      <div class="container header__inner">
+        <a href="../../index.html" class="logo" aria-label="Graf Lukas — на главную">
+          <svg class="logo__mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+            <path d="M16 3 4 8.5 16 14l12-5.5L16 3Z"></path>
+            <path d="M4 15.5 16 21l12-5.5"></path>
+            <path d="M4 22.5 16 28l12-5.5"></path>
+          </svg>
+          <span class="logo__text">Graf Lukas</span>
+        </a>
+
+        <nav class="nav" aria-label="Основная навигация">
+          <a href="../../index.html">Главная</a>
+          <a href="../catalog/index.html">Каталог</a>
+          <a href="../support/index.html">Поддержка</a>
+        </nav>
+
+        <div class="header__actions">
+          <button class="icon-button" id="themeToggleBtn" type="button" aria-label="Переключить тему"></button>
+
+          <button class="icon-button" type="button" data-open-search aria-label="Открыть поиск">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="m20 20-3.5-3.5"></path>
+            </svg>
+          </button>
+
+          <a class="button button--ghost" href="./index.html">Аккаунт</a>
+
+          <a class="button button--secondary" href="../checkout/index.html">
+            Корзина
+            <span class="product-card__badge" data-cart-count hidden>0</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="account-page">
+      <div class="container">
+        <nav class="account-breadcrumbs" aria-label="Хлебные крошки">
+          <span><a href="../../index.html">Главная</a></span>
+          <span>/</span>
+          <span aria-current="page">Аккаунт</span>
+        </nav>
+
+        <div class="account-layout">
+          <aside class="account-sidebar">
+            <section class="account-profile" aria-labelledby="accountProfileTitle">
+              <div class="account-profile__top">
+                <div class="account-avatar" data-account-avatar aria-hidden="true">G</div>
+
+                <div>
+                  <h1 class="account-profile__name" id="accountProfileTitle" data-account-name>Покупатель</h1>
+                  <p class="account-profile__meta" data-account-meta>client@graflukas.store · @graflukas_user</p>
+                </div>
+              </div>
+
+              <div class="account-badges" aria-label="Статусы аккаунта">
+                <span class="account-badge">Verified</span>
+                <span class="account-badge">Digital buyer</span>
+                <span class="account-badge">RU</span>
+              </div>
+            </section>
+
+            <nav class="account-nav" aria-label="Разделы аккаунта">
+              <a class="account-nav__link is-active" href="./index.html">
+                <span>Обзор аккаунта</span>
+                <span>→</span>
+              </a>
+              <a class="account-nav__link" href="../checkout/index.html">
+                <span>Текущие покупки</span>
+                <span>→</span>
+              </a>
+              <a class="account-nav__link" href="../support/index.html">
+                <span>Обращения в поддержку</span>
+                <span>→</span>
+              </a>
+              <a class="account-nav__link" href="../catalog/index.html">
+                <span>Повторить покупку</span>
+                <span>→</span>
+              </a>
+            </nav>
+          </aside>
+
+          <section class="account-main">
+            <section class="account-panel" aria-labelledby="accountOverviewTitle">
+              <div class="account-panel__head">
+                <div>
+                  <h2 class="account-panel__title" id="accountOverviewTitle">Обзор покупок</h2>
+                  <p class="account-panel__text">
+                    Здесь собраны заказы, активные покупки и быстрые действия по цифровым товарам.
+                  </p>
+                </div>
+
+                <a class="button button--secondary" href="../catalog/index.html">Перейти в каталог</a>
+              </div>
+
+              <div class="account-kpis" aria-label="Основные показатели аккаунта">
+                <article class="account-card">
+                  <div class="account-card__label">Всего заказов</div>
+                  <div class="account-card__value" data-account-kpi-orders>0</div>
+                  <div class="account-card__hint">История цифровых покупок</div>
+                </article>
+
+                <article class="account-card">
+                  <div class="account-card__label">Потрачено</div>
+                  <div class="account-card__value" data-account-kpi-spent>0 ₽</div>
+                  <div class="account-card__hint">Суммарные покупки по аккаунту</div>
+                </article>
+
+                <article class="account-card">
+                  <div class="account-card__label">Нужно внимание</div>
+                  <div class="account-card__value" data-account-kpi-active>0</div>
+                  <div class="account-card__hint">Активные или проблемные заказы</div>
+                </article>
+              </div>
+            </section>
+
+            <section class="account-panel" aria-labelledby="accountOrdersTitle">
+              <div class="account-panel__head">
+                <div>
+                  <h2 class="account-panel__title" id="accountOrdersTitle">История заказов</h2>
+                  <p class="account-panel__text">
+                    Следи за выдачей, повторяй удачные покупки и быстро открывай нужный заказ.
+                  </p>
+                </div>
+              </div>
+
+              <div class="account-orders" data-account-orders>
+                <!-- orders render here -->
+              </div>
+
+              <div class="account-empty" data-account-empty hidden>
+                <div class="account-empty__title">Пока нет заказов</div>
+                <div class="account-empty__text">
+                  Добавь первый цифровой товар в корзину и оформи покупку.
+                </div>
+                <div style="margin-top: 1rem;">
+                  <a class="button button--primary" href="../catalog/index.html">Открыть каталог</a>
+                </div>
+              </div>
+            </section>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div>
+          <div class="footer__brand">Graf Lukas</div>
+          <p class="footer__text">
+            Магазин цифровых подписок, игровых пополнений и сервисов с быстрой выдачей.
+          </p>
+        </div>
+
+        <nav class="footer__nav" aria-label="Навигация в подвале">
+          <a href="../../index.html">Главная</a>
+          <a href="../catalog/index.html">Каталог</a>
+          <a href="../support/index.html">Поддержка</a>
+          <a href="./index.html">Аккаунт</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+
+  <div class="search-modal" id="searchModal" aria-hidden="true">
+    <div class="search-modal__backdrop" data-search-backdrop></div>
+
+    <div class="search-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+      <div class="search-modal__top">
+        <svg class="search-modal__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle>
+          <path d="m20 20-3.5-3.5"></path>
+        </svg>
+
+        <label class="sr-only" for="searchInput">Поиск товаров</label>
+        <input
+          class="search-modal__input"
+          id="searchInput"
+          type="search"
+          placeholder="Найти Steam, Spotify, Telegram Premium..."
+          autocomplete="off"
+        >
+
+        <button class="search-modal__close" id="searchCloseBtn" type="button" aria-label="Закрыть поиск">
+          Esc
+        </button>
+      </div>
+
+      <div class="search-modal__results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <script src="../../assets/data/products.js"></script>
+  <script src="../../assets/data/categories.js"></script>
+
+  <script src="../../assets/js/utils.js"></script>
+  <script src="../../assets/js/render.js"></script>
+  <script src="../../assets/js/cart.js"></script>
+  <script src="../../assets/js/search.js"></script>
+  <script src="../../assets/js/pages/account.js"></script>
+</body>
+</html>

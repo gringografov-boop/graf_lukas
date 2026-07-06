@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Оформление заказа — Graf Lukas</title>
+
+  <meta name="description" content="Оформление заказа в Graf Lukas: данные покупателя, способ оплаты и итог заказа.">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#171a21" media="(prefers-color-scheme: dark)">
+
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,800,900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../assets/css/tokens.css">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/layout.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/pages/checkout.css">
+
+  <script src="../../assets/js/theme.js"></script>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="header">
+      <div class="container header__inner">
+        <a href="../../index.html" class="logo" aria-label="Graf Lukas — на главную">
+          <svg class="logo__mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+            <path d="M16 3 4 8.5 16 14l12-5.5L16 3Z"></path>
+            <path d="M4 15.5 16 21l12-5.5"></path>
+            <path d="M4 22.5 16 28l12-5.5"></path>
+          </svg>
+          <span class="logo__text">Graf Lukas</span>
+        </a>
+
+        <nav class="nav" aria-label="Основная навигация">
+          <a href="../../index.html">Главная</a>
+          <a href="../catalog/index.html">Каталог</a>
+          <a href="../support/index.html">Поддержка</a>
+        </nav>
+
+        <div class="header__actions">
+          <button class="icon-button" id="themeToggleBtn" type="button" aria-label="Переключить тему"></button>
+
+          <button class="icon-button" type="button" data-open-search aria-label="Открыть поиск">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="m20 20-3.5-3.5"></path>
+            </svg>
+          </button>
+
+          <a class="button button--ghost" href="../account/index.html">Аккаунт</a>
+
+          <a class="button button--secondary" href="./index.html">
+            Корзина
+            <span class="product-card__badge" data-cart-count hidden>0</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="checkout-page">
+      <div class="container">
+        <nav class="checkout-breadcrumbs" aria-label="Хлебные крошки">
+          <ol role="list" class="cluster">
+            <li><a href="../../index.html">Главная</a></li>
+            <li>/</li>
+            <li><a href="../catalog/index.html">Каталог</a></li>
+            <li>/</li>
+            <li aria-current="page">Оформление заказа</li>
+          </ol>
+        </nav>
+
+        <div class="checkout-layout" id="checkoutLayout">
+          <section class="checkout-main">
+            <div class="checkout-hero">
+              <span class="eyebrow" data-checkout-mode>Корзина</span>
+              <h1 class="checkout-hero__title">Оформление заказа</h1>
+              <p class="checkout-hero__text">
+                Заполни данные покупателя и выбери удобный способ оплаты. После оформления инструкции и данные товара будут доступны в личном кабинете.
+              </p>
+            </div>
+
+            <div class="checkout-progress" aria-label="Этапы оформления">
+              <div class="checkout-progress__step">Корзина</div>
+              <div class="checkout-progress__step is-active">Оформление</div>
+              <div class="checkout-progress__step">Получение товара</div>
+            </div>
+
+            <div id="checkoutSuccess" hidden></div>
+
+            <section class="checkout-block" aria-labelledby="buyerDataTitle">
+              <div class="checkout-block__head">
+                <h2 class="checkout-block__title" id="buyerDataTitle">Данные покупателя</h2>
+                <p class="checkout-block__text">
+                  Используй актуальный email и контакты, чтобы быстро получить заказ.
+                </p>
+              </div>
+
+              <form class="checkout-form" id="checkoutForm">
+                <div class="checkout-form__grid">
+                  <div class="checkout-field">
+                    <label class="checkout-label" for="customerName">Имя</label>
+                    <input class="checkout-input" id="customerName" name="name" type="text" placeholder="Твоё имя" required>
+                  </div>
+
+                  <div class="checkout-field">
+                    <label class="checkout-label" for="customerTelegram">Telegram</label>
+                    <input class="checkout-input" id="customerTelegram" name="telegram" type="text" placeholder="@username" required>
+                  </div>
+
+                  <div class="checkout-field checkout-field--full">
+                    <label class="checkout-label" for="customerEmail">Email</label>
+                    <input class="checkout-input" id="customerEmail" name="email" type="email" placeholder="you@example.com" required>
+                  </div>
+
+                  <div class="checkout-field checkout-field--full">
+                    <label class="checkout-label" for="customerComment">Комментарий к заказу</label>
+                    <textarea class="checkout-textarea" id="customerComment" name="comment" placeholder="Например: нужен конкретный регион, аккаунт уже есть, оформить сегодня."></textarea>
+                  </div>
+                </div>
+
+                <section class="checkout-block" aria-labelledby="paymentMethodTitle">
+                  <div class="checkout-block__head">
+                    <h3 class="checkout-block__title" id="paymentMethodTitle">Способ оплаты</h3>
+                    <p class="checkout-block__text">
+                      Выбери удобный вариант оплаты для цифрового заказа.
+                    </p>
+                  </div>
+
+                  <div class="checkout-payment-options">
+                    <label class="checkout-option">
+                      <input type="radio" name="payment" value="card" checked>
+                      <div>
+                        <div class="checkout-option__title">Банковская карта</div>
+                        <div class="checkout-option__text">Быстрая оплата и автоматическая обработка заказа.</div>
+                      </div>
+                    </label>
+
+                    <label class="checkout-option">
+                      <input type="radio" name="payment" value="sbp">
+                      <div>
+                        <div class="checkout-option__title">СБП</div>
+                        <div class="checkout-option__text">Оплата через систему быстрых платежей.</div>
+                      </div>
+                    </label>
+
+                    <label class="checkout-option">
+                      <input type="radio" name="payment" value="crypto">
+                      <div>
+                        <div class="checkout-option__title">Криптовалюта</div>
+                        <div class="checkout-option__text">Подходит для цифровых международных покупок.</div>
+                      </div>
+                    </label>
+                  </div>
+                </section>
+
+                <div class="checkout-actions">
+                  <button class="button button--primary" type="submit">Подтвердить заказ</button>
+                  <a class="button button--ghost" href="../catalog/index.html">Вернуться в каталог</a>
+                </div>
+              </form>
+            </section>
+          </section>
+
+          <aside class="checkout-summary" aria-labelledby="orderSummaryTitle">
+            <div class="checkout-summary__head">
+              <h2 class="checkout-summary__title" id="orderSummaryTitle">Твой заказ</h2>
+              <p class="checkout-summary__text">
+                Проверь товары перед подтверждением.
+              </p>
+            </div>
+
+            <div class="checkout-cart" id="checkoutCart">
+              <!-- cart items -->
+            </div>
+
+            <div class="checkout-summary__totals">
+              <div class="checkout-total-row">
+                <span>Товаров</span>
+                <strong data-checkout-count>0</strong>
+              </div>
+
+              <div class="checkout-total-row">
+                <span>Подытог</span>
+                <strong data-checkout-subtotal>0 ₽</strong>
+              </div>
+
+              <div class="checkout-total-row checkout-total-row--grand">
+                <span>Итого</span>
+                <strong data-checkout-total>0 ₽</strong>
+              </div>
+            </div>
+
+            <div class="checkout-note">
+              После оплаты цифровой товар будет доступен в личном кабинете. Для некоторых позиций может понадобиться дополнительное подтверждение данных.
+            </div>
+
+            <div class="checkout-trust">
+              <div class="checkout-trust__item">
+                <div class="checkout-trust__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  </svg>
+                </div>
+                <div>Заказ проходит через понятный сценарий получения и хранения данных покупателя.</div>
+              </div>
+
+              <div class="checkout-trust__item">
+                <div class="checkout-trust__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                </div>
+                <div>После подтверждения заказа покупатель сразу понимает следующий шаг.</div>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <div class="checkout-empty" id="checkoutEmpty" hidden>
+          <div class="checkout-empty__title">Корзина пока пустая</div>
+          <div class="checkout-empty__text">
+            Добавь товары из каталога или открой быструю покупку со страницы товара.
+          </div>
+          <div style="margin-top: 1rem;">
+            <a class="button button--primary" href="../catalog/index.html">Открыть каталог</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div>
+          <div class="footer__brand">Graf Lukas</div>
+          <p class="footer__text">
+            Магазин цифровых подписок, игровых пополнений и сервисов с быстрой выдачей.
+          </p>
+        </div>
+
+        <nav class="footer__nav" aria-label="Навигация в подвале">
+          <a href="../../index.html">Главная</a>
+          <a href="../catalog/index.html">Каталог</a>
+          <a href="../support/index.html">Поддержка</a>
+          <a href="../account/index.html">Аккаунт</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+
+  <div class="search-modal" id="searchModal" aria-hidden="true">
+    <div class="search-modal__backdrop" data-search-backdrop></div>
+
+    <div class="search-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+      <div class="search-modal__top">
+        <svg class="search-modal__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle>
+          <path d="m20 20-3.5-3.5"></path>
+        </svg>
+
+        <label class="sr-only" for="searchInput">Поиск товаров</label>
+        <input
+          class="search-modal__input"
+          id="searchInput"
+          type="search"
+          placeholder="Найти Steam, Spotify, Telegram Premium..."
+          autocomplete="off"
+        >
+
+        <button class="search-modal__close" id="searchCloseBtn" type="button" aria-label="Закрыть поиск">
+          Esc
+        </button>
+      </div>
+
+      <div class="search-modal__results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <script src="../../assets/data/products.js"></script>
+  <script src="../../assets/data/categories.js"></script>
+
+  <script src="../../assets/js/utils.js"></script>
+  <script src="../../assets/js/render.js"></script>
+  <script src="../../assets/js/cart.js"></script>
+  <script src="../../assets/js/search.js"></script>
+  <script src="../../assets/js/pages/checkout.js"></script>
+</body>
+</html>

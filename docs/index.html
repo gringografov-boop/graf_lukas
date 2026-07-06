@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graf Lukas — подарочные карты и подписки</title>
+  <meta name="description" content="Подарочные карты и цифровые подписки с мгновенной доставкой. Steam, Spotify, Netflix, Telegram Premium и другие сервисы.">
+
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./assets/css/tokens.css">
+  <link rel="stylesheet" href="./assets/css/base.css">
+  <link rel="stylesheet" href="./assets/css/layout.css">
+  <link rel="stylesheet" href="./assets/css/components.css">
+  <link rel="stylesheet" href="./assets/css/pages/home.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="header">
+      <div class="container header__inner">
+        <a href="./index.html" class="logo" aria-label="Graf Lukas">
+          <span class="logo__mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <rect width="32" height="32" rx="9" fill="var(--color-primary)"/>
+              <path d="M9 20c2.5-5.5 11.5-5.5 14 0" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="12" cy="13" r="2" fill="#fff"/>
+              <circle cx="20" cy="13" r="2" fill="#fff"/>
+              <path d="M21 22.5H11l1-2.5h8l1 2.5z" fill="#fff" opacity=".6"/>
+            </svg>
+          </span>
+          <span class="logo__text">Graf Lukas</span>
+        </a>
+
+        <nav class="nav" aria-label="Основная навигация">
+          <a href="./index.html">Главная</a>
+          <a href="./pages/catalog/index.html">Каталог</a>
+          <a href="./pages/support/index.html">Поддержка</a>
+        </nav>
+
+        <div class="header__actions">
+          <button class="icon-button" id="searchOpenBtn" type="button" aria-label="Открыть поиск">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+          </button>
+
+          <button class="icon-button" id="themeToggleBtn" type="button" aria-label="Переключить тему">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+
+          <a class="button button--ghost" href="./pages/account/index.html">Войти</a>
+          <a class="button button--primary" href="./pages/checkout/index.html" id="cartButton">Корзина</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero section">
+        <div class="container">
+          <div class="hero__content">
+            <p class="eyebrow">Graf Lukas</p>
+            <h1>Подарочные карты и подписки</h1>
+            <p class="hero__text">
+              Цифровые товары с быстрой выдачей: Steam, Spotify, Netflix, Telegram Premium, Roblox,
+              PlayStation, Xbox и другие сервисы.
+            </p>
+
+            <div class="hero__actions">
+              <a class="button button--primary" href="./pages/catalog/index.html">Открыть каталог</a>
+              <button class="button button--secondary" type="button" id="heroSearchBtn">Найти подписку</button>
+            </div>
+
+            <div class="trust-list" aria-label="Преимущества">
+              <span class="trust-chip">4.9 рейтинг</span>
+              <span class="trust-chip">Выдача за минуты</span>
+              <span class="trust-chip">Поддержка 24/7</span>
+              <span class="trust-chip">Популярные сервисы</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section categories">
+        <div class="container">
+          <div class="section-head">
+            <h2>Категории</h2>
+          </div>
+
+          <div class="categories__grid" id="categoriesGrid">
+            <!-- categories.js / render.js -->
+          </div>
+        </div>
+      </section>
+
+      <section class="section featured">
+        <div class="container">
+          <div class="section-head">
+            <h2>Хиты продаж</h2>
+            <a href="./pages/catalog/index.html">Смотреть все</a>
+          </div>
+
+          <div class="products-grid" id="featuredProducts">
+            <!-- products.js / render.js -->
+          </div>
+        </div>
+      </section>
+
+      <section class="section promo">
+        <div class="container">
+          <div class="promo-banner">
+            <div>
+              <p class="eyebrow">Бонусы</p>
+              <h2>Другу скидка, вам бонусы</h2>
+              <p>
+                Делись ссылкой на магазин, дари скидку на первый заказ и получай бонусы после покупки друга.
+              </p>
+            </div>
+
+            <button class="button button--primary" type="button">Получить ссылку</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div>
+          <div class="footer__brand">Graf Lukas</div>
+          <p class="footer__text">Подарочные карты и цифровые подписки с мгновенной доставкой.</p>
+        </div>
+
+        <nav class="footer__nav" aria-label="Навигация в подвале">
+          <a href="./pages/catalog/index.html">Каталог</a>
+          <a href="./pages/support/index.html">Поддержка</a>
+          <a href="./pages/account/index.html">Аккаунт</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+
+  <div class="search-modal" id="searchModal" aria-hidden="true">
+    <div class="search-modal__backdrop" data-search-close></div>
+
+    <div class="search-modal__dialog" role="dialog" aria-modal="true" aria-label="Поиск по подпискам">
+      <div class="search-modal__top">
+        <svg class="search-modal__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+
+        <input
+          id="searchInput"
+          class="search-modal__input"
+          type="text"
+          placeholder="Поиск подписок и сервисов..."
+          autocomplete="off"
+        >
+
+        <button class="search-modal__close" type="button" data-search-close>Закрыть</button>
+      </div>
+
+      <div class="search-modal__results" id="searchResults">
+        <!-- search.js -->
+      </div>
+    </div>
+  </div>
+
+  <script src="./assets/data/products.js"></script>
+  <script src="./assets/data/categories.js"></script>
+  <script src="./assets/js/utils.js"></script>
+  <script src="./assets/js/render.js"></script>
+  <script src="./assets/js/theme.js"></script>
+  <script src="./assets/js/cart.js"></script>
+  <script src="./assets/js/search.js"></script>
+  <script src="./assets/js/pages/home.js"></script>
+</body>
+</html>

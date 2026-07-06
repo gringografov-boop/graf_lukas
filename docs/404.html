@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>404 — Страница не найдена | Graf Lukas</title>
+
+  <meta name="description" content="Страница не найдена. Вернись в каталог, на главную или воспользуйся поиском по цифровым подпискам и сервисам.">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#171a21" media="(prefers-color-scheme: dark)">
+
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,800,900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./assets/css/tokens.css">
+  <link rel="stylesheet" href="./assets/css/base.css">
+  <link rel="stylesheet" href="./assets/css/layout.css">
+  <link rel="stylesheet" href="./assets/css/components.css">
+
+  <script src="./assets/js/theme.js"></script>
+
+  <style>
+    .not-found-page {
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      background:
+        radial-gradient(circle at top left,
+          color-mix(in srgb, var(--color-primary) 10%, transparent),
+          transparent 38%),
+        var(--color-bg);
+    }
+
+    .not-found-main {
+      flex: 1;
+      display: grid;
+      align-items: center;
+      padding: clamp(var(--space-8), 7vw, var(--space-20)) 0;
+    }
+
+    .not-found-shell {
+      display: grid;
+      gap: var(--space-6);
+      grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+      align-items: stretch;
+    }
+
+    .not-found-card,
+    .not-found-side {
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      background: var(--color-surface);
+      box-shadow: var(--shadow-md);
+    }
+
+    .not-found-card {
+      padding: clamp(var(--space-6), 5vw, var(--space-10));
+      display: grid;
+      gap: var(--space-5);
+    }
+
+    .not-found-code {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 0.55rem 0.9rem;
+      border-radius: var(--radius-full);
+      background: color-mix(in srgb, var(--color-primary) 10%, var(--color-surface));
+      color: var(--color-primary);
+      font-size: var(--text-xs);
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .not-found-title {
+      max-width: 12ch;
+      font-size: clamp(2.4rem, 1.5rem + 3vw, 4.6rem);
+      line-height: 0.98;
+      font-weight: 900;
+      color: var(--color-text);
+    }
+
+    .not-found-text {
+      max-width: 58ch;
+      color: var(--color-text-muted);
+      font-size: var(--text-base);
+    }
+
+    .not-found-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+    }
+
+    .not-found-search {
+      display: grid;
+      gap: var(--space-3);
+      margin-top: var(--space-2);
+    }
+
+    .not-found-search__label {
+      color: var(--color-text);
+      font-size: var(--text-sm);
+      font-weight: 800;
+    }
+
+    .not-found-search__row {
+      display: flex;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+
+    .not-found-search__input {
+      flex: 1 1 18rem;
+      min-height: 3.25rem;
+      padding: 0.95rem 1rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      background: var(--color-surface-2);
+      color: var(--color-text);
+      font-size: var(--text-sm);
+      outline: none;
+      transition:
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        background var(--transition-fast);
+    }
+
+    .not-found-search__input:focus {
+      border-color: var(--color-primary);
+      background: var(--color-surface);
+      box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-primary) 14%, transparent);
+    }
+
+    .not-found-search__hint {
+      color: var(--color-text-muted);
+      font-size: var(--text-xs);
+    }
+
+    .not-found-side {
+      padding: clamp(var(--space-5), 4vw, var(--space-8));
+      display: grid;
+      gap: var(--space-5);
+      align-content: start;
+    }
+
+    .not-found-side__title {
+      color: var(--color-text);
+      font-size: var(--text-lg);
+      font-weight: 900;
+    }
+
+    .not-found-links {
+      display: grid;
+      gap: var(--space-3);
+    }
+
+    .not-found-link {
+      display: grid;
+      gap: var(--space-1);
+      padding: var(--space-4);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      background: var(--color-surface-2);
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .not-found-link:hover {
+      border-color: color-mix(in srgb, var(--color-primary) 25%, var(--color-border));
+      transform: translateY(-1px);
+    }
+
+    .not-found-link__title {
+      color: var(--color-text);
+      font-size: var(--text-sm);
+      font-weight: 800;
+    }
+
+    .not-found-link__text {
+      color: var(--color-text-muted);
+      font-size: var(--text-xs);
+    }
+
+    .not-found-note {
+      padding-top: var(--space-2);
+      border-top: 1px solid var(--color-divider);
+      color: var(--color-text-muted);
+      font-size: var(--text-xs);
+    }
+
+    @media (max-width: 980px) {
+      .not-found-shell {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .not-found-actions,
+      .not-found-search__row {
+        flex-direction: column;
+      }
+
+      .not-found-actions .button,
+      .not-found-search__row .button,
+      .not-found-search__input {
+        width: 100%;
+      }
+
+      .not-found-card,
+      .not-found-side {
+        padding: var(--space-4);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-shell not-found-page">
+    <header class="header">
+      <div class="container header__inner">
+        <a href="./index.html" class="logo" aria-label="Graf Lukas — на главную">
+          <svg class="logo__mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+            <path d="M16 3 4 8.5 16 14l12-5.5L16 3Z"></path>
+            <path d="M4 15.5 16 21l12-5.5"></path>
+            <path d="M4 22.5 16 28l12-5.5"></path>
+          </svg>
+          <span class="logo__text">Graf Lukas</span>
+        </a>
+
+        <nav class="nav" aria-label="Основная навигация">
+          <a href="./index.html">Главная</a>
+          <a href="./pages/catalog/index.html">Каталог</a>
+          <a href="./pages/support/index.html">Поддержка</a>
+        </nav>
+
+        <div class="header__actions">
+          <button class="icon-button" id="themeToggleBtn" type="button" aria-label="Переключить тему"></button>
+
+          <button class="icon-button" type="button" data-open-search aria-label="Открыть поиск">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="m20 20-3.5-3.5"></path>
+            </svg>
+          </button>
+
+          <a class="button button--ghost" href="./pages/account/index.html">Аккаунт</a>
+
+          <a class="button button--secondary" href="./pages/checkout/index.html">
+            Корзина
+            <span class="product-card__badge" data-cart-count hidden>0</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="not-found-main">
+      <div class="container">
+        <div class="not-found-shell">
+          <section class="not-found-card" aria-labelledby="notFoundTitle">
+            <span class="not-found-code">Ошибка 404</span>
+
+            <h1 class="not-found-title" id="notFoundTitle">Страница не найдена</h1>
+
+            <p class="not-found-text">
+              Возможно, ссылка устарела, страница была перемещена или в адресе есть опечатка. Попробуй вернуться на главную, перейти в каталог или найти нужный сервис через поиск.
+            </p>
+
+            <div class="not-found-actions">
+              <a class="button button--primary" href="./index.html">На главную</a>
+              <a class="button button--secondary" href="./pages/catalog/index.html">Открыть каталог</a>
+              <a class="button button--ghost" href="./pages/support/index.html">Написать в поддержку</a>
+            </div>
+
+            <form class="not-found-search" action="./pages/catalog/index.html" method="get">
+              <label class="not-found-search__label" for="notFoundSearch">
+                Быстрый поиск по каталогу
+              </label>
+
+              <div class="not-found-search__row">
+                <input
+                  class="not-found-search__input"
+                  id="notFoundSearch"
+                  name="q"
+                  type="search"
+                  placeholder="Например: Steam, Spotify, Telegram Premium"
+                  autocomplete="off"
+                >
+                <button class="button button--primary" type="submit">Найти</button>
+              </div>
+
+              <p class="not-found-search__hint">
+                Ищи по названию сервиса, игры или подписки.
+              </p>
+            </form>
+          </section>
+
+          <aside class="not-found-side" aria-labelledby="notFoundLinksTitle">
+            <h2 class="not-found-side__title" id="notFoundLinksTitle">Куда можно перейти</h2>
+
+            <div class="not-found-links">
+              <a class="not-found-link" href="./pages/catalog/index.html">
+                <span class="not-found-link__title">Каталог подписок</span>
+                <span class="not-found-link__text">Steam, Spotify, Netflix, Telegram Premium и другие товары.</span>
+              </a>
+
+              <a class="not-found-link" href="./pages/checkout/index.html">
+                <span class="not-found-link__title">Корзина</span>
+                <span class="not-found-link__text">Проверь, не остались ли там выбранные позиции.</span>
+              </a>
+
+              <a class="not-found-link" href="./pages/account/index.html">
+                <span class="not-found-link__title">Аккаунт</span>
+                <span class="not-found-link__text">История заказов, статус покупок и быстрые действия.</span>
+              </a>
+
+              <a class="not-found-link" href="./pages/support/index.html">
+                <span class="not-found-link__title">Поддержка</span>
+                <span class="not-found-link__text">FAQ, контакты и форма обращения по заказам.</span>
+              </a>
+            </div>
+
+            <p class="not-found-note">
+              Если ошибка повторяется по внутренней ссылке, лучше сообщить об этом через страницу поддержки.
+            </p>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div>
+          <div class="footer__brand">Graf Lukas</div>
+          <p class="footer__text">
+            Магазин цифровых подписок, игровых пополнений и сервисов с быстрой выдачей.
+          </p>
+        </div>
+
+        <nav class="footer__nav" aria-label="Навигация в подвале">
+          <a href="./index.html">Главная</a>
+          <a href="./pages/catalog/index.html">Каталог</a>
+          <a href="./pages/support/index.html">Поддержка</a>
+          <a href="./pages/account/index.html">Аккаунт</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+
+  <div class="search-modal" id="searchModal" aria-hidden="true">
+    <div class="search-modal__backdrop" data-search-backdrop></div>
+
+    <div class="search-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
+      <div class="search-modal__top">
+        <svg class="search-modal__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle>
+          <path d="m20 20-3.5-3.5"></path>
+        </svg>
+
+        <label class="sr-only" for="searchInput">Поиск товаров</label>
+        <input
+          class="search-modal__input"
+          id="searchInput"
+          type="search"
+          placeholder="Найти Steam, Spotify, Telegram Premium..."
+          autocomplete="off"
+        >
+
+        <button class="search-modal__close" id="searchCloseBtn" type="button" aria-label="Закрыть поиск">
+          Esc
+        </button>
+      </div>
+
+      <div class="search-modal__results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <script src="./assets/data/settings.js"></script>
+  <script src="./assets/data/products.js"></script>
+  <script src="./assets/data/categories.js"></script>
+
+  <script src="./assets/js/utils.js"></script>
+  <script src="./assets/js/render.js"></script>
+  <script src="./assets/js/cart.js"></script>
+  <script src="./assets/js/search.js"></script>
+  <script src="./assets/js/app.js"></script>
+</body>
+</html>
