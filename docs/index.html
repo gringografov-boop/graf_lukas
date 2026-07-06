@@ -39,7 +39,7 @@
         </nav>
 
         <div class="header__actions">
-          <button class="icon-button" id="searchOpenBtn" type="button" aria-label="Открыть поиск">
+          <button class="icon-button" id="searchOpenBtn" data-open-search type="button" aria-label="Открыть поиск">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
               <circle cx="11" cy="11" r="8"></circle>
               <path d="m21 21-4.35-4.35"></path>
@@ -71,7 +71,7 @@
 
             <div class="hero__actions">
               <a class="button button--primary" href="./pages/catalog/index.html">Открыть каталог</a>
-              <button class="button button--secondary" type="button" id="heroSearchBtn">Найти подписку</button>
+              <button class="button button--secondary" type="button" data-open-search id="heroSearchBtn">Найти подписку</button>
             </div>
 
             <div class="trust-list" aria-label="Преимущества">
@@ -143,7 +143,7 @@
   </div>
 
   <div class="search-modal" id="searchModal" aria-hidden="true">
-    <div class="search-modal__backdrop" data-search-close></div>
+    <div class="search-modal__backdrop" data-search-backdrop></div>
 
     <div class="search-modal__dialog" role="dialog" aria-modal="true" aria-label="Поиск по подпискам">
       <div class="search-modal__top">
@@ -160,7 +160,7 @@
           autocomplete="off"
         >
 
-        <button class="search-modal__close" type="button" data-search-close>Закрыть</button>
+        <button class="search-modal__close" id="searchCloseBtn" type="button">Закрыть</button>
       </div>
 
       <div class="search-modal__results" id="searchResults">
@@ -176,6 +176,7 @@
   <script src="./assets/js/theme.js"></script>
   <script src="./assets/js/cart.js"></script>
   <script src="./assets/js/search.js"></script>
+  <script src="./assets/js/app.js"></script>
   <script src="./assets/js/pages/home.js"></script>
 </body>
 </html>
