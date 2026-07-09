@@ -16,10 +16,6 @@ window.GrafLukasTheme = (function () {
     </svg>
   `;
 
-  const getSystemTheme = () => {
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-  };
-
   const getSavedTheme = () => {
     try {
       return window.localStorage.getItem(STORAGE_KEY);
@@ -53,11 +49,12 @@ window.GrafLukasTheme = (function () {
 
   const getPreferredTheme = () => {
     const savedTheme = getSavedTheme();
+
     if (savedTheme === "dark" || savedTheme === "light") {
       return savedTheme;
     }
 
-    return getSystemTheme();
+    return "dark";
   };
 
   const toggleTheme = () => {
@@ -68,25 +65,8 @@ window.GrafLukasTheme = (function () {
     saveTheme(nextTheme);
   };
 
-  const watchSystemTheme = () => {
-    const media = window.matchMedia("(prefers-color-scheme: dark)");
-
-    const onChange = () => {
-      const savedTheme = getSavedTheme();
-      if (savedTheme) return;
-      applyTheme(getSystemTheme());
-    };
-
-    if (typeof media.addEventListener === "function") {
-      media.addEventListener("change", onChange);
-    } else if (typeof media.addListener === "function") {
-      media.addListener(onChange);
-    }
-  };
-
   const init = () => {
     applyTheme(getPreferredTheme());
-    watchSystemTheme();
 
     if (toggleButton) {
       toggleButton.addEventListener("click", toggleTheme);
