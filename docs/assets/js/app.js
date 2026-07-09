@@ -1,5 +1,4 @@
 (function () {
-  const root = document.documentElement;
   const body = document.body;
 
   const qs = (selector, scope = document) => scope.querySelector(selector);
@@ -10,68 +9,12 @@
   };
 
   const ui = {
-    themeToggle: null,
     searchModal: null,
     searchInput: null,
     searchClose: null,
     searchBackdrop: null,
     searchOpeners: [],
     cartCounters: []
-  };
-
-  const icons = {
-    moon: `
-      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-        <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"></path>
-      </svg>
-    `,
-    sun: `
-      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-        <circle cx="12" cy="12" r="5"></circle>
-        <path d="M12 1v2"></path>
-        <path d="M12 21v2"></path>
-        <path d="M4.22 4.22l1.42 1.42"></path>
-        <path d="M18.36 18.36l1.42 1.42"></path>
-        <path d="M1 12h2"></path>
-        <path d="M21 12h2"></path>
-        <path d="M4.22 19.78l1.42-1.42"></path>
-        <path d="M18.36 5.64l1.42-1.42"></path>
-      </svg>
-    `
-  };
-
-  const getTheme = () => {
-    return root.getAttribute("data-theme") || "light";
-  };
-
-  const updateThemeButton = () => {
-    if (!ui.themeToggle) return;
-
-    const theme = getTheme();
-    const nextTheme = theme === "dark" ? "light" : "dark";
-
-    ui.themeToggle.innerHTML = theme === "dark" ? icons.sun : icons.moon;
-    ui.themeToggle.setAttribute("aria-label", `Переключить тему на ${nextTheme}`);
-    ui.themeToggle.setAttribute("title", `Тема: ${theme}`);
-  };
-
-  const bindThemeToggle = () => {
-    ui.themeToggle = qs("#themeToggleBtn");
-
-    if (!ui.themeToggle) return;
-
-    updateThemeButton();
-
-    if (ui.themeToggle.dataset.bound === "true") return;
-    ui.themeToggle.dataset.bound = "true";
-
-    ui.themeToggle.addEventListener("click", () => {
-      const current = getTheme();
-      const next = current === "dark" ? "light" : "dark";
-
-      root.setAttribute("data-theme", next);
-      updateThemeButton();
-    });
   };
 
   const lockScroll = () => {
@@ -116,7 +59,6 @@
     ui.searchOpeners.forEach((button) => {
       if (button.dataset.bound === "true") return;
       button.dataset.bound = "true";
-
       button.addEventListener("click", openSearch);
     });
 
@@ -180,7 +122,6 @@
 
   const bindCartSync = () => {
     syncCartCounters();
-
     document.addEventListener("graf-lukas:cart-updated", syncCartCounters);
     window.addEventListener("pageshow", syncCartCounters);
   };
@@ -212,13 +153,11 @@
     window.GrafLukasApp = {
       openSearch,
       closeSearch,
-      syncCartCounters,
-      updateThemeButton
+      syncCartCounters
     };
   };
 
   const init = () => {
-    bindThemeToggle();
     bindSearchModal();
     bindCartSync();
     bindCurrentYear();
