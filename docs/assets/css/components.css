@@ -609,3 +609,93 @@
     flex-direction: column;
   }
 }
+.product-card,
+.category-card {
+  --card-accent: var(--color-primary);
+  --card-accent-soft: color-mix(in srgb, var(--card-accent) 18%, white);
+  --card-accent-deep: color-mix(in srgb, var(--card-accent) 72%, black);
+}
+
+.product-card {
+  position: relative;
+  overflow: hidden;
+  border-color: color-mix(in srgb, var(--card-accent) 24%, var(--color-border));
+  background:
+    radial-gradient(circle at top right, color-mix(in srgb, var(--card-accent) 20%, transparent), transparent 32%),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--card-accent) 10%, white) 0%,
+      color-mix(in srgb, var(--card-accent) 16%, var(--color-surface)) 100%
+    );
+  box-shadow:
+    0 14px 34px color-mix(in srgb, var(--card-accent) 16%, transparent),
+    inset 0 1px 0 rgba(255,255,255,.28);
+}
+
+.product-card::before {
+  content: "";
+  position: absolute;
+  inset: 0.45rem;
+  border-radius: calc(var(--radius-xl) - 0.45rem);
+  background:
+    radial-gradient(circle at 88% 14%, color-mix(in srgb, var(--card-accent) 26%, white), transparent 0 18%, transparent 19%),
+    linear-gradient(
+      165deg,
+      rgba(255,255,255,.72) 0%,
+      rgba(255,255,255,.46) 32%,
+      rgba(255,255,255,.12) 100%
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.product-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.product-card__title {
+  color: color-mix(in srgb, var(--card-accent) 58%, #102417);
+}
+
+.product-card__text {
+  color: color-mix(in srgb, var(--card-accent-deep) 62%, #3f5a4c);
+}
+
+.product-card__icon {
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255,255,255,.35), transparent 48%),
+    color-mix(in srgb, var(--card-accent) 12%, white);
+  box-shadow:
+    0 10px 24px color-mix(in srgb, var(--card-accent) 14%, transparent),
+    inset 0 1px 0 rgba(255,255,255,.34);
+}
+
+.product-card .button--primary {
+  border-color: color-mix(in srgb, var(--card-accent) 52%, white 14%);
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--card-accent) 82%, white 8%) 0%,
+      color-mix(in srgb, var(--card-accent-deep) 78%, black 10%) 100%
+    );
+  box-shadow:
+    0 14px 30px color-mix(in srgb, var(--card-accent) 28%, transparent),
+    0 0 24px color-mix(in srgb, var(--card-accent) 18%, transparent);
+}
+
+.product-card .button--secondary,
+.product-card .button--ghost {
+  border-color: color-mix(in srgb, var(--card-accent) 22%, var(--color-border));
+  background: color-mix(in srgb, var(--card-accent) 10%, rgba(255,255,255,.7));
+}
+
+.category-card {
+  border-color: color-mix(in srgb, var(--card-accent) 22%, var(--color-border));
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--card-accent) 10%, white) 0%,
+      color-mix(in srgb, var(--card-accent) 8%, var(--color-surface)) 100%
+    );
+}
