@@ -171,3 +171,72 @@
     init();
   }
 })();
+function rgbToHex(r, g, b) {
+  return "#" + [r, g, b].map(v => v.toString(16).padStart(2, "0")).join("");
+}
+
+function getAverageColor(img) {
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d", { willReadFrequently: true });
+
+  const size = 32;
+  canvas.width = size;
+  canvas.height = size;
+
+  ctx.drawImage(img, 0, 0, size, size);
+  const { data } = ctx.getImageData(0, 0, size, size);
+
+  let r = 0, g = 0, b = 0, count = 0;
+
+  for (let i = 0; i < data.length; i += 4) {
+    const alpha = data[i + 3];
+    if (alpha < 120) continue;
+
+    const rr = data[i];
+    const gg = data[i + 1];
+    const bb = data[i + 2];
+
+    const max = Math.max(rr, gg, bb);
+    const min = Math.min(rr, gg, bb);
+    if (max - min < 14) continue;
+
+    r += rr;
+    g += gg;
+    b += bb;
+    count++;
+  }
+
+  if (!count) return "#16c47f";
+
+  return rgbToHex(
+    Math.round(r / count),
+    Math.round(g / count),
+    Math.round(b / count)
+  );
+}
+
+function applyIconDrivenCardColors() {
+  document.querySelectorAll(".product-card, .category-card").forEach((card) => {
+    const img = card.querySelector(".product-card__icon img, .category-card__icon img");
+    if (!img) return;
+
+    const apply = () => {
+      try {
+        const accent = getAverageColor(img);
+        card.style.setProperty("--card-accent", accent);
+      } catch (e) {}
+    };
+
+    if (img.complete) {
+      apply();
+    } else {
+      img.addEventListener("load", apply, { once: true });
+    }
+  });
+}
+
+window.addEventListener("load", () => {
+  requestAnimationFrame(() => {
+    applyIconDrivenCardColors();
+  });
+});
