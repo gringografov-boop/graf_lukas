@@ -39,37 +39,47 @@ window.GRAF_LUKAS_SETTINGS = {
       "Инструкция по активации и данные товара появляются в личном кабинете после обработки заказа."
   },
 
+  routes: {
+    home: "/graf_lukas/index.html",
+    catalog: "/graf_lukas/pages/catalog/index.html",
+    product: "/graf_lukas/pages/product/index.html",
+    checkout: "/graf_lukas/pages/checkout/index.html",
+    account: "/graf_lukas/pages/account/index.html",
+    support: "/graf_lukas/pages/support/index.html",
+    notFound: "/graf_lukas/404.html"
+  },
+
   navigation: {
     primary: [
       {
         label: "Главная",
-        href: "/docs/index.html"
+        href: "/graf_lukas/index.html"
       },
       {
         label: "Каталог",
-        href: "/docs/pages/catalog/index.html"
+        href: "/graf_lukas/pages/catalog/index.html"
       },
       {
         label: "Поддержка",
-        href: "/docs/pages/support/index.html"
+        href: "/graf_lukas/pages/support/index.html"
       }
     ],
     footer: [
       {
         label: "Главная",
-        href: "/docs/index.html"
+        href: "/graf_lukas/index.html"
       },
       {
         label: "Каталог",
-        href: "/docs/pages/catalog/index.html"
+        href: "/graf_lukas/pages/catalog/index.html"
       },
       {
         label: "Поддержка",
-        href: "/docs/pages/support/index.html"
+        href: "/graf_lukas/pages/support/index.html"
       },
       {
         label: "Аккаунт",
-        href: "/docs/pages/account/index.html"
+        href: "/graf_lukas/pages/account/index.html"
       }
     ]
   },
