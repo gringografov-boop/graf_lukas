@@ -1,102 +1,6 @@
 (function () {
-  const body = document.body;
-
-  const qs = (selector, scope = document) => scope.querySelector(selector);
-  const qsa = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
-
-  const state = {
-    searchOpen: false
-  };
-
-  const ui = {
-    searchModal: null,
-    searchInput: null,
-    searchClose: null,
-    searchBackdrop: null,
-    searchOpeners: [],
-    cartCounters: []
-  };
-
-  const lockScroll = () => {
-    body.style.overflow = "hidden";
-  };
-
-  const unlockScroll = () => {
-    body.style.overflow = "";
-  };
-
-  const openSearch = () => {
-    if (!ui.searchModal) return;
-
-    ui.searchModal.setAttribute("aria-hidden", "false");
-    ui.searchModal.classList.add("is-open");
-    state.searchOpen = true;
-    lockScroll();
-
-    if (ui.searchInput) {
-      window.setTimeout(() => ui.searchInput.focus(), 20);
-    }
-  };
-
-  const closeSearch = () => {
-    if (!ui.searchModal) return;
-
-    ui.searchModal.setAttribute("aria-hidden", "true");
-    ui.searchModal.classList.remove("is-open");
-    state.searchOpen = false;
-    unlockScroll();
-  };
-
-  const bindSearchModal = () => {
-    ui.searchModal = qs("#searchModal");
-    ui.searchInput = qs("#searchInput");
-    ui.searchClose = qs("#searchCloseBtn");
-    ui.searchBackdrop = qs("[data-search-backdrop]");
-    ui.searchOpeners = qsa("[data-open-search]");
-
-    if (!ui.searchModal) return;
-
-    ui.searchOpeners.forEach((button) => {
-      if (button.dataset.bound === "true") return;
-      button.dataset.bound = "true";
-      button.addEventListener("click", openSearch);
-    });
-
-    if (ui.searchClose && ui.searchClose.dataset.bound !== "true") {
-      ui.searchClose.dataset.bound = "true";
-      ui.searchClose.addEventListener("click", closeSearch);
-    }
-
-    if (ui.searchBackdrop && ui.searchBackdrop.dataset.bound !== "true") {
-      ui.searchBackdrop.dataset.bound = "true";
-      ui.searchBackdrop.addEventListener("click", closeSearch);
-    }
-
-    if (ui.searchInput && ui.searchInput.dataset.bound !== "true") {
-      ui.searchInput.dataset.bound = "true";
-      ui.searchInput.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
-          closeSearch();
-        }
-      });
-    }
-
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "/" && !state.searchOpen) {
-        const tag = document.activeElement?.tagName?.toLowerCase();
-        const isTyping = ["input", "textarea", "select"].includes(tag);
-
-        if (!isTyping) {
-          event.preventDefault();
-          openSearch();
-        }
-      }
-
-      if (event.key === "Escape" && state.searchOpen) {
-        closeSearch();
-      }
-    });
-  };
+  const qsa = (selector, scope = document) =>
+    Array.from(scope.querySelectorAll(selector));
 
   const readCartCount = () => {
     const cartApi = window.GrafLukasCart;
@@ -105,16 +9,16 @@
       return 0;
     }
 
-    const items = cartApi.getCart() || [];
-    return items.reduce((sum, item) => sum + (item.quantity || 1), 0);
+    return (cartApi.getCart() || []).reduce(
+      (sum, item) => sum + (item.quantity || 1),
+      0
+    );
   };
 
   const syncCartCounters = () => {
-    ui.cartCounters = qsa("[data-cart-count]");
-
     const count = readCartCount();
 
-    ui.cartCounters.forEach((node) => {
+    qsa("[data-cart-count]").forEach((node) => {
       node.textContent = String(count);
       node.hidden = count <= 0;
     });
@@ -122,7 +26,7 @@
 
   const bindCartSync = () => {
     syncCartCounters();
-    document.addEventListener("graf-lukas:cart-updated", syncCartCounters);
+    window.addEventListener("graf-lukas-cart:change", syncCartCounters);
     window.addEventListener("pageshow", syncCartCounters);
   };
 
@@ -134,35 +38,112 @@
 
   const markCurrentNavLink = () => {
     const currentPath = window.location.pathname.replace(/\/+$/, "");
-    const links = qsa(".nav a, .footer__nav a, .account-nav__link");
 
-    links.forEach((link) => {
+    qsa(".nav a, .footer__nav a, .account-nav__link").forEach((link) => {
       const href = link.getAttribute("href");
+
       if (!href || href.startsWith("#")) return;
 
-      const url = new URL(href, window.location.href);
-      const linkPath = url.pathname.replace(/\/+$/, "");
+      const linkPath = new URL(href, window.location.href)
+        .pathname
+        .replace(/\/+$/, "");
 
       if (linkPath === currentPath) {
         link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
       }
     });
   };
 
   const exposeAppApi = () => {
     window.GrafLukasApp = {
-      openSearch,
-      closeSearch,
+      openSearch: () => window.GrafLukasSearch?.open(),
+      closeSearch: () => window.GrafLukasSearch?.close(),
       syncCartCounters
     };
   };
 
+  const rgbToHex = (r, g, b) =>
+    "#" + [r, g, b].map((value) => value.toString(16).padStart(2, "0")).join("");
+
+  const getAverageColor = (image) => {
+    const canvas = document.createElement("canvas");
+    const context = canvas.getContext("2d", { willReadFrequently: true });
+    const size = 32;
+
+    canvas.width = size;
+    canvas.height = size;
+    context.drawImage(image, 0, 0, size, size);
+
+    const { data } = context.getImageData(0, 0, size, size);
+    let red = 0;
+    let green = 0;
+    let blue = 0;
+    let count = 0;
+
+    for (let index = 0; index < data.length; index += 4) {
+      const alpha = data[index + 3];
+      const r = data[index];
+      const g = data[index + 1];
+      const b = data[index + 2];
+
+      if (alpha < 120 || Math.max(r, g, b) - Math.min(r, g, b) < 14) {
+        continue;
+      }
+
+      red += r;
+      green += g;
+      blue += b;
+      count += 1;
+    }
+
+    if (!count) return "#16c47f";
+
+    return rgbToHex(
+      Math.round(red / count),
+      Math.round(green / count),
+      Math.round(blue / count)
+    );
+  };
+
+  const applyIconDrivenCardColors = (scope = document) => {
+    qsa(".product-card, .category-card", scope).forEach((card) => {
+      const image = card.querySelector(
+        ".product-card__icon img, .category-card__icon img"
+      );
+
+      if (!image || image.dataset.cardAccentBound === "true") return;
+
+      image.dataset.cardAccentBound = "true";
+
+      const applyAccent = () => {
+        try {
+          card.style.setProperty("--card-accent", getAverageColor(image));
+        } catch {
+          card.style.setProperty("--card-accent", "#16c47f");
+        }
+      };
+
+      if (image.complete && image.naturalWidth) {
+        applyAccent();
+      } else {
+        image.addEventListener("load", applyAccent, { once: true });
+        image.addEventListener(
+          "error",
+          () => card.style.setProperty("--card-accent", "#16c47f"),
+          { once: true }
+        );
+      }
+    });
+  };
+
   const init = () => {
-    bindSearchModal();
     bindCartSync();
     bindCurrentYear();
     markCurrentNavLink();
     exposeAppApi();
+    applyIconDrivenCardColors();
   };
 
   if (document.readyState === "loading") {
@@ -170,74 +151,12 @@
   } else {
     init();
   }
+
+  window.addEventListener("load", () => {
+    window.requestAnimationFrame(() => applyIconDrivenCardColors());
+  });
+
+  window.addEventListener("graf-lukas:cards-rendered", (event) => {
+    applyIconDrivenCardColors(event.detail?.scope || document);
+  });
 })();
-
-function rgbToHex(r, g, b) {
-  return "#" + [r, g, b].map(v => v.toString(16).padStart(2, "0")).join("");
-}
-
-function getAverageColor(img) {
-  const canvas = document.createElement("canvas");
-  const ctx = canvas.getContext("2d", { willReadFrequently: true });
-
-  const size = 32;
-  canvas.width = size;
-  canvas.height = size;
-
-  ctx.drawImage(img, 0, 0, size, size);
-  const { data } = ctx.getImageData(0, 0, size, size);
-
-  let r = 0, g = 0, b = 0, count = 0;
-
-  for (let i = 0; i < data.length; i += 4) {
-    const alpha = data[i + 3];
-    if (alpha < 120) continue;
-
-    const rr = data[i];
-    const gg = data[i + 1];
-    const bb = data[i + 2];
-
-    const max = Math.max(rr, gg, bb);
-    const min = Math.min(rr, gg, bb);
-    if (max - min < 14) continue;
-
-    r += rr;
-    g += gg;
-    b += bb;
-    count++;
-  }
-
-  if (!count) return "#16c47f";
-
-  return rgbToHex(
-    Math.round(r / count),
-    Math.round(g / count),
-    Math.round(b / count)
-  );
-}
-
-function applyIconDrivenCardColors() {
-  document.querySelectorAll(".product-card, .category-card").forEach((card) => {
-    const img = card.querySelector(".product-card__icon img, .category-card__icon img");
-    if (!img) return;
-
-    const apply = () => {
-      try {
-        const accent = getAverageColor(img);
-        card.style.setProperty("--card-accent", accent);
-      } catch (e) {}
-    };
-
-    if (img.complete) {
-      apply();
-    } else {
-      img.addEventListener("load", apply, { once: true });
-    }
-  });
-}
-
-window.addEventListener("load", () => {
-  requestAnimationFrame(() => {
-    applyIconDrivenCardColors();
-  });
-});

@@ -18,6 +18,8 @@ window.GrafLukasSearch = (function () {
 
   const open = () => {
     if (!modal) return;
+
+    modal.setAttribute("aria-hidden", "false");
     modal.classList.add("is-open");
     document.body.classList.add("modal-open");
 
@@ -32,6 +34,8 @@ window.GrafLukasSearch = (function () {
 
   const close = () => {
     if (!modal) return;
+
+    modal.setAttribute("aria-hidden", "true");
     modal.classList.remove("is-open");
     document.body.classList.remove("modal-open");
 
