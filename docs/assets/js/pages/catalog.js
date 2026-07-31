@@ -25,6 +25,7 @@
 
   const getCurrentCategory = () => {
     const value = getQueryParam("category");
+
     return value || "all";
   };
 
@@ -38,6 +39,7 @@
     }
 
     const category = categories.find((item) => item.slug === slug);
+
     if (!category) {
       return {
         slug: "all",
@@ -55,6 +57,7 @@
 
   const getVisibleProducts = (slug) => {
     if (slug === "all") return products;
+
     return getProductsByCategory(products, slug);
   };
 
@@ -73,7 +76,9 @@
 
     if (currentNode) {
       currentNode.textContent =
-        meta.slug === "all" ? "Показаны все категории" : `Категория: ${meta.title}`;
+        meta.slug === "all"
+          ? "Показаны все категории"
+          : `Категория: ${meta.title}`;
     }
 
     document.title =
@@ -102,10 +107,12 @@
       item.title
     );
 
+    const catalogRoute = "/graf_lukas/pages/catalog/index.html";
+
     link.href =
       item.slug === "all"
-        ? "./index.html"
-        : `./index.html?category=${encodeURIComponent(item.slug)}`;
+        ? catalogRoute
+        : `${catalogRoute}?category=${encodeURIComponent(item.slug)}`;
 
     link.setAttribute("data-category-chip", item.slug);
 
@@ -121,10 +128,12 @@
       { slug: "all", title: "Все" },
       activeSlug === "all"
     );
+
     filtersRoot.appendChild(allChip);
 
     categories.forEach((category) => {
       const chip = buildFilterChip(category, activeSlug === category.slug);
+
       filtersRoot.appendChild(chip);
     });
   };
@@ -146,7 +155,6 @@
 
   const init = () => {
     renderCatalog();
-    cart.bindCartCounter();
   };
 
   init();
