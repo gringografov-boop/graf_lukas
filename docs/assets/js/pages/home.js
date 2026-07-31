@@ -12,6 +12,7 @@
 
   const renderHomeCategories = () => {
     if (!categoriesRoot) return;
+
     renderCategories(categoriesRoot, categories);
   };
 
@@ -19,6 +20,7 @@
     if (!featuredRoot) return;
 
     const featuredProducts = getFeaturedProducts(products).slice(0, 6);
+
     renderProducts(featuredRoot, featuredProducts);
 
     if (featuredCountNode) {
@@ -33,7 +35,7 @@
 
     openCatalogButtons.forEach((button) => {
       button.addEventListener("click", () => {
-        window.location.href = "./pages/catalog/index.html";
+        window.location.href = "/graf_lukas/pages/catalog/index.html";
       });
     });
   };
@@ -42,7 +44,6 @@
     renderHomeCategories();
     renderFeaturedProducts();
     bindHeroButtons();
-    cart.bindCartCounter();
   };
 
   init();
