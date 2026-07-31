@@ -26,13 +26,13 @@
   const similarRoot = qs("[data-similar-products]");
   const pageTitleNode = qs("[data-product-page-title]");
   const pageTextNode = qs("[data-product-page-text]");
-  const metaTitle = document.querySelector("title");
 
   const productParam = getQueryParam("product") || getQueryParam("slug");
   const currentProduct = getProductBySlug(products, productParam) || products[0] || null;
 
   const getSimilarProducts = (product) => {
     if (!product) return [];
+
     return products
       .filter((item) => item.id !== product.id && item.category === product.category)
       .slice(0, 4);
@@ -40,6 +40,7 @@
 
   const setText = (node, value = "") => {
     if (!node) return;
+
     node.textContent = value;
   };
 
@@ -77,17 +78,19 @@
     const paragraph2 = createElement(
       "p",
       "",
-      "После оплаты товар появляется в личном кабинете, а инструкция по активации доступна сразу после оформления."
+      "После подтверждения оплаты цифровой товар и инструкция по активации будут выданы в порядке, определённом для заказа."
     );
 
     const list = document.createElement("ul");
+
     [
       `Тип товара: ${product.categoryLabel}`,
-      `Формат покупки: цифровая выдача`,
+      "Формат покупки: цифровая выдача",
       `Статус: ${product.inStock ? "в наличии" : "нет в наличии"}`,
       `Особенность: ${product.note || "быстрая обработка заказа"}`
     ].forEach((item) => {
       const li = document.createElement("li");
+
       li.textContent = item;
       list.appendChild(li);
     });
@@ -107,6 +110,7 @@
     setText(priceNode, product.price);
     setText(breadcrumbsCurrent, product.title);
     setText(pageTitleNode, product.title);
+
     setText(
       pageTextNode,
       `${product.description}. Цифровая покупка с быстрой выдачей и понятной активацией.`
@@ -114,16 +118,13 @@
 
     document.title = `${product.title} — Graf Lukas`;
 
-    if (metaTitle) {
-      metaTitle.textContent = `${product.title} — Graf Lukas`;
-    }
-
     if (addToCartButton) {
       addToCartButton.setAttribute("data-add-to-cart", product.id);
     }
 
     if (buyNowButton) {
-      buyNowButton.href = `../checkout/index.html?product=${encodeURIComponent(product.id)}`;
+      buyNowButton.href =
+        `/graf_lukas/pages/checkout/index.html?product=${encodeURIComponent(product.id)}`;
     }
 
     renderImage(product);
@@ -134,17 +135,18 @@
     if (!similarRoot || !product) return;
 
     const similarProducts = getSimilarProducts(product);
+
     renderProducts(similarRoot, similarProducts);
-    cart.bindAddToCartButtons(similarRoot);
   };
 
   const bindMainActions = () => {
-    if (!addToCartButton) return;
-
     cart.bindAddToCartButtons(document);
+
+    if (!addToCartButton) return;
 
     addToCartButton.addEventListener("click", () => {
       const originalText = addToCartButton.textContent;
+
       addToCartButton.textContent = "Добавлено";
       addToCartButton.disabled = true;
 
@@ -161,7 +163,6 @@
     renderMainInfo(currentProduct);
     renderSimilar(currentProduct);
     bindMainActions();
-    cart.bindCartCounter();
   };
 
   init();
