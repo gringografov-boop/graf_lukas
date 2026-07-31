@@ -26,6 +26,7 @@
 
   const getDirectProduct = () => {
     if (!directProductParam) return null;
+
     return getProductBySlug(products, directProductParam);
   };
 
@@ -59,7 +60,7 @@
     const article = createElement("article", "checkout-cart__item");
 
     const thumb = createElement("div", "checkout-cart__thumb");
-    const img = createImage({
+    const image = createImage({
       src: item.image,
       alt: item.title,
       width: 48,
@@ -82,7 +83,7 @@
 
     const price = createElement("div", "checkout-cart__price", priceValue);
 
-    thumb.appendChild(img);
+    thumb.appendChild(image);
     body.append(title, meta);
     article.append(thumb, body, price);
 
@@ -93,6 +94,7 @@
     if (!cartRoot) return;
 
     cartRoot.innerHTML = "";
+
     items.forEach((item) => {
       cartRoot.appendChild(createCartItem(item));
     });
@@ -115,7 +117,9 @@
     }
 
     if (directBadgeNode) {
-      directBadgeNode.textContent = getDirectProduct() ? "Быстрая покупка" : "Корзина";
+      directBadgeNode.textContent = getDirectProduct()
+        ? "Быстрая покупка"
+        : "Корзина";
     }
   };
 
@@ -132,33 +136,28 @@
 
     if (successBox) {
       successBox.hidden = true;
+      successBox.innerHTML = "";
     }
   };
 
-  const showSuccess = (items) => {
-    if (successBox) {
-      successBox.hidden = false;
-      successBox.innerHTML = "";
-      successBox.appendChild(
-        createElement(
-          "div",
-          "checkout-note",
-          "Заказ оформлен. Данные для получения товара появятся в личном кабинете."
-        )
-      );
-    }
+  const showUnavailableMessage = () => {
+    if (!successBox) return;
 
-    if (!getDirectProduct()) {
-      cart.clear();
-    }
+    successBox.hidden = false;
+    successBox.innerHTML = "";
 
-    renderPage(items.length ? [] : getCheckoutItems());
+    successBox.appendChild(
+      createElement(
+        "div",
+        "checkout-note",
+        "Оформление заказа временно недоступно: подключение оплаты ещё не завершено. Товары сохранены в корзине."
+      )
+    );
   };
 
   const bindForm = (items) => {
-    if (!form) return;
+    if (!form || form.dataset.bound === "true") return;
 
-    if (form.dataset.bound === "true") return;
     form.dataset.bound = "true";
 
     form.addEventListener("submit", (event) => {
@@ -176,14 +175,13 @@
         return;
       }
 
-      showSuccess(items);
-      form.reset();
+      showUnavailableMessage();
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   };
 
-  const renderPage = (forcedItems) => {
-    const items = Array.isArray(forcedItems) ? forcedItems : getCheckoutItems();
+  const renderPage = () => {
+    const items = getCheckoutItems();
 
     toggleState(items);
 
@@ -196,7 +194,6 @@
 
   const init = () => {
     renderPage();
-    cart.bindCartCounter();
   };
 
   init();

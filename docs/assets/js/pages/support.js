@@ -1,18 +1,13 @@
 (function () {
-  const {
-    qs,
-    createElement
-  } = window.GrafLukasUtils;
+  const { qs, createElement } = window.GrafLukasUtils;
 
-  const cart = window.GrafLukasCart;
-  const faqItems = Array.isArray(window.GRAF_LUKAS_FAQ) ? window.GRAF_LUKAS_FAQ : [];
+  const faqItems = Array.isArray(window.GRAF_LUKAS_FAQ)
+    ? window.GRAF_LUKAS_FAQ
+    : [];
 
   const faqRoot = qs("[data-support-faq]");
   const form = qs("#supportForm");
   const successRoot = qs("#supportSuccess");
-  const topicSelect = qs("#supportTopic");
-  const emailInput = qs("#supportEmail");
-  const messageInput = qs("#supportMessage");
 
   const renderFaq = () => {
     if (!faqRoot) return;
@@ -20,12 +15,13 @@
     faqRoot.innerHTML = "";
 
     if (!faqItems.length) {
-      const empty = createElement(
-        "div",
-        "support-card__meta",
-        "FAQ пока не заполнен. Попробуй написать в поддержку через форму ниже."
+      faqRoot.appendChild(
+        createElement(
+          "div",
+          "support-card__meta",
+          "FAQ пока не заполнен. Контакты поддержки будут доступны здесь."
+        )
       );
-      faqRoot.appendChild(empty);
       return;
     }
 
@@ -54,30 +50,23 @@
     });
   };
 
-  const showSuccess = (topicValue, emailValue) => {
+  const showUnavailableMessage = () => {
     if (!successRoot) return;
 
     successRoot.hidden = false;
     successRoot.innerHTML = "";
 
-    const title = createElement(
-      "div",
-      "support-success__title",
-      "Обращение отправлено"
+    successRoot.appendChild(
+      createElement(
+        "div",
+        "support-success__text",
+        "Отправка обращений через форму пока не подключена. Пожалуйста, используйте опубликованный канал поддержки, когда он будет добавлен."
+      )
     );
-
-    const text = createElement(
-      "div",
-      "support-success__text",
-      `Мы получили заявку по теме «${topicValue}». Ответ отправим на ${emailValue} или свяжемся через указанный контакт.`
-    );
-
-    successRoot.append(title, text);
   };
 
   const bindForm = () => {
-    if (!form) return;
-    if (form.dataset.bound === "true") return;
+    if (!form || form.dataset.bound === "true") return;
 
     form.dataset.bound = "true";
 
@@ -88,27 +77,13 @@
         return;
       }
 
-      const topicValue =
-        topicSelect?.options?.[topicSelect.selectedIndex]?.textContent?.trim() || "Поддержка";
-
-      const emailValue = String(emailInput?.value || "").trim();
-      const messageValue = String(messageInput?.value || "").trim();
-
-      if (!emailValue || !messageValue) {
-        form.reportValidity();
-        return;
-      }
-
-      showSuccess(topicValue, emailValue);
-      form.reset();
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      showUnavailableMessage();
     });
   };
 
   const init = () => {
     renderFaq();
     bindForm();
-    cart.bindCartCounter();
   };
 
   init();
