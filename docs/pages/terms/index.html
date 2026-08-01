@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Условия продажи и возврата — Graf Lukas</title>
+
+  <meta
+    name="description"
+    content="Условия продажи цифровых товаров и правила возврата в Graf Lukas."
+  >
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#171a21" media="(prefers-color-scheme: dark)">
+
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link
+    href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,800,900&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="/graf_lukas/assets/css/tokens.css">
+  <link rel="stylesheet" href="/graf_lukas/assets/css/base.css">
+  <link rel="stylesheet" href="/graf_lukas/assets/css/layout.css">
+  <link rel="stylesheet" href="/graf_lukas/assets/css/components.css">
+
+  <script src="/graf_lukas/assets/js/theme.js"></script>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="header">
+      <div class="container header__inner">
+        <a href="/graf_lukas/index.html" class="logo" aria-label="Graf Lukas — на главную">
+          <svg
+            class="logo__mark"
+            viewBox="0 0 32 32"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.2"
+            aria-hidden="true"
+          >
+            <path d="M16 3 4 8.5 16 14l12-5.5L16 3Z"></path>
+            <path d="M4 15.5 16 21l12-5.5"></path>
+            <path d="M4 22.5 16 28l12-5.5"></path>
+          </svg>
+          <span class="logo__text">Graf Lukas</span>
+        </a>
+
+        <nav class="nav" aria-label="Основная навигация">
+          <a href="/graf_lukas/index.html">Главная</a>
+          <a href="/graf_lukas/pages/catalog/index.html">Каталог</a>
+          <a href="/graf_lukas/pages/support/index.html">Поддержка</a>
+        </nav>
+
+        <div class="header__actions">
+          <button
+            class="icon-button"
+            id="themeToggleBtn"
+            type="button"
+            aria-label="Переключить тему"
+          ></button>
+
+          <a class="button button--ghost" href="/graf_lukas/pages/account/index.html">Аккаунт</a>
+
+          <a class="button button--secondary" href="/graf_lukas/pages/checkout/index.html">
+            Корзина
+            <span class="product-card__badge" data-cart-count hidden>0</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="legal-page">
+      <div class="container" style="max-width: 720px; padding-block: 3rem;">
+        <nav class="support-breadcrumbs" aria-label="Хлебные крошки">
+          <span><a href="/graf_lukas/index.html">Главная</a></span>
+          <span>/</span>
+          <span aria-current="page">Условия продажи и возврата</span>
+        </nav>
+
+        <h1 style="margin-top: 1.5rem;">Условия продажи и возврата</h1>
+        <p class="support-block__text" style="margin-top: 0.5rem;">
+          Последнее обновление: 1 августа 2026 года.
+        </p>
+
+        <section style="margin-top: 2rem;">
+          <h2 class="support-block__title">1. Что продаётся</h2>
+          <p class="support-card__text">
+            Graf Lukas продаёт цифровые товары: подписки, игровые пополнения и коды активации
+            сторонних сервисов. Товар не является физическим и не отправляется почтой или курьером.
+          </p>
+        </section>
+
+        <section style="margin-top: 2rem;">
+          <h2 class="support-block__title">2. Оформление заказа</h2>
+          <p class="support-card__text">
+            Заказ можно оформить без регистрации аккаунта. Email указывается как обязательный
+            контакт для отправки статуса заказа, чека и данных, необходимых для получения товара.
+          </p>
+        </section>
+
+        <section style="margin-top: 2rem;">
+          <h2 class="support-block__title">3. Оплата</h2>
+          <p class="support-card__text">
+            Заказ считается оплаченным только после подтверждения платежа платёжным провайдером.
+            Промежуточные статусы в браузере (переход на страницу успеха, параметр в адресной
+            строке) не являются подтверждением оплаты.
+          </p>
+        </section>
+
+        <section style="margin-top: 2rem;">
+          <h2 class="support-block__title">4. Выдача товара</h2>
+          <p class="support-card__text">
+            Цифровой товар выдаётся только после подтверждённой оплаты. Способ и срок выдачи
+            зависят от конкретного товара и указываются в описании товара или в переписке с
+            поддержкой.
+          </p>
+        </section>
+
+        <section style="margin-top: 2rem;">
+          <h2 class="support-block__title">5. Возврат и обмен</h2>
+          <p class="support-card__text">
+            Возврат рассматривается индивидуально и зависит от типа товара и статуса его выдачи.
+            Если код или доступ уже были предоставлены и активированы, возврат может быть
+            невозможен по характеру цифрового товара. Для оформления возврата напиши в поддержку
+            с номером заказа.
+          </p>
+        </section>
+
+        <section style="margin-top: 2rem;">
+          <h2 class="support-block__title">6. Ответственность за данные доступа</h2>
+          <p class="support-card__text">
+            Покупатель обязан не передавать третьим лицам коды активации, ссылки на доступ и
+            прочие переданные материалы до момента их использования по назначению.
+          </p>
+        </section>
+
+        <section style="margin-top: 2rem;">
+          <h2 class="support-block__title">7. Обращение в поддержку</h2>
+          <p class="support-card__text">
+            По вопросам заказа, оплаты или выдачи товара пиши на
+            <a href="mailto:support@graflukas.store">support@graflukas.store</a> — при обращении
+            укажи номер заказа.
+          </p>
+        </section>
+
+        <section style="margin-top: 2rem;">
+          <h2 class="support-block__title">8. Изменения условий</h2>
+          <p class="support-card__text">
+            Условия могут обновляться по мере подключения реального эквайринга и новых способов
+            оплаты. Актуальная версия всегда доступна на этой странице.
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <div>
+          <div class="footer__brand">Graf Lukas</div>
+          <p class="footer__text">
+            Магазин цифровых подписок, игровых пополнений и сервисов с быстрой выдачей.
+          </p>
+        </div>
+
+        <nav class="footer__nav" aria-label="Навигация в подвале">
+          <a href="/graf_lukas/index.html">Главная</a>
+          <a href="/graf_lukas/pages/catalog/index.html">Каталог</a>
+          <a href="/graf_lukas/pages/support/index.html">Поддержка</a>
+          <a href="/graf_lukas/pages/account/index.html">Аккаунт</a>
+          <a href="/graf_lukas/pages/privacy/index.html">Политика данных</a>
+          <a href="/graf_lukas/pages/terms/index.html">Условия продажи</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+
+  <script src="/graf_lukas/assets/js/app.js"></script>
+</body>
+</html>

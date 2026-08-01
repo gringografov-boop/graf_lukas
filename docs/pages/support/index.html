@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Поддержка — Graf Lukas</title>
 
-  <meta name="description" content="Поддержка Graf Lukas: FAQ, контакты и форма обращения по заказам, оплате и цифровым товарам.">
+  <meta name="description"
+    content="Поддержка Graf Lukas: FAQ, контакты и информация по заказам, оплате и цифровым товарам.">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#171a21" media="(prefers-color-scheme: dark)">
 
@@ -20,12 +22,14 @@
 
   <script src="/graf_lukas/assets/js/theme.js"></script>
 </head>
+
 <body>
   <div class="site-shell">
     <header class="header">
       <div class="container header__inner">
         <a href="/graf_lukas/index.html" class="logo" aria-label="Graf Lukas — на главную">
-          <svg class="logo__mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+          <svg class="logo__mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2"
+            aria-hidden="true">
             <path d="M16 3 4 8.5 16 14l12-5.5L16 3Z"></path>
             <path d="M4 15.5 16 21l12-5.5"></path>
             <path d="M4 22.5 16 28l12-5.5"></path>
@@ -72,7 +76,8 @@
             <span class="eyebrow">Помощь и связь</span>
             <h1 class="support-hero__title" id="supportHeroTitle">Поддержка покупателей</h1>
             <p class="support-hero__text">
-              Проверь частые вопросы, выбери удобный канал связи и отправь обращение по заказу, оплате или активации цифрового товара.
+              Проверь частые вопросы, используй опубликованные контакты и найди информацию по заказам,
+              оплате и активации цифрового товара.
             </p>
           </div>
         </section>
@@ -94,9 +99,10 @@
 
             <article class="support-form" aria-labelledby="supportFormTitle">
               <div class="support-block__head">
-                <h2 class="support-block__title" id="supportFormTitle">Отправить обращение</h2>
+                <h2 class="support-block__title" id="supportFormTitle">Форма обращения</h2>
                 <p class="support-block__text">
-                  Опиши вопрос кратко и по делу. Для заказов лучше указывать email, Telegram и номер заказа.
+                  Форма пока работает как интерфейс-заглушка. Для реальной связи используй опубликованные
+                  контакты справа.
                 </p>
               </div>
 
@@ -106,37 +112,22 @@
                 <div class="support-form__grid">
                   <div class="support-field">
                     <label class="support-label" for="supportName">Имя</label>
-                    <input
-                      class="support-input"
-                      id="supportName"
-                      name="name"
-                      type="text"
-                      placeholder="Как к тебе обращаться"
-                      required
-                    >
+                    <input class="support-input" id="supportName" name="name" type="text"
+                      placeholder="Как к тебе обращаться" required>
                   </div>
 
                   <div class="support-field">
                     <label class="support-label" for="supportEmail">Email</label>
-                    <input
-                      class="support-input"
-                      id="supportEmail"
-                      name="email"
-                      type="email"
-                      placeholder="you@example.com"
-                      required
-                    >
+                    <input class="support-input" id="supportEmail" name="email" type="email"
+                      placeholder="you@example.com" required>
                   </div>
 
                   <div class="support-field">
-                    <label class="support-label" for="supportTelegram">Telegram</label>
-                    <input
-                      class="support-input"
-                      id="supportTelegram"
-                      name="telegram"
-                      type="text"
-                      placeholder="@username"
-                    >
+                    <label class="support-label" for="supportTelegram">
+                      Telegram <span aria-hidden="true">(необязательно)</span>
+                    </label>
+                    <input class="support-input" id="supportTelegram" name="telegram" type="text"
+                      placeholder="@username">
                   </div>
 
                   <div class="support-field">
@@ -152,14 +143,8 @@
 
                   <div class="support-field support-field--full">
                     <label class="support-label" for="supportOrder">Номер заказа</label>
-                    <input
-                      class="support-input"
-                      id="supportOrder"
-                      name="order"
-                      type="text"
-                      placeholder="Например: GL-1042"
-                      aria-describedby="supportOrderHint"
-                    >
+                    <input class="support-input" id="supportOrder" name="order" type="text"
+                      placeholder="Например: GL-1042" aria-describedby="supportOrderHint">
                     <p class="support-form__note" id="supportOrderHint">
                       Если вопрос связан с покупкой, укажи номер заказа для быстрой проверки.
                     </p>
@@ -167,19 +152,16 @@
 
                   <div class="support-field support-field--full">
                     <label class="support-label" for="supportMessage">Сообщение</label>
-                    <textarea
-                      class="support-textarea"
-                      id="supportMessage"
-                      name="message"
-                      placeholder="Опиши проблему, что уже пробовал и какой результат получил"
-                      required
-                    ></textarea>
+                    <textarea class="support-textarea" id="supportMessage" name="message"
+                      placeholder="Опиши проблему, что уже пробовал и какой результат получил" required></textarea>
                   </div>
                 </div>
 
                 <div class="support-form__actions">
-                  <button class="button button--primary" type="submit">Отправить обращение</button>
-                  <a class="button button--ghost" href="/graf_lukas/pages/account/index.html">Открыть аккаунт</a>
+                  <button class="button button--primary" type="submit">Проверить форму</button>
+                  <a class="button button--ghost" href="/graf_lukas/pages/account/index.html">
+                    Открыть аккаунт
+                  </a>
                 </div>
               </form>
             </article>
@@ -192,20 +174,28 @@
               <address class="support-contact-list">
                 <div class="support-contact-item">
                   <div class="support-contact-item__label">Email</div>
-                  <a class="support-contact-item__value" href="mailto:support@graflukas.store">support@graflukas.store</a>
-                  <div class="support-contact-item__hint">Основной канал по заказам и оплате</div>
+                  <a class="support-contact-item__value" href="mailto:support@graflukas.store">
+                    support@graflukas.store
+                  </a>
+                  <div class="support-contact-item__hint">
+                    Основной канал по заказам, оплате и цифровой выдаче
+                  </div>
                 </div>
 
                 <div class="support-contact-item">
                   <div class="support-contact-item__label">Telegram</div>
-                  <a class="support-contact-item__value" href="#" target="_blank" rel="noopener noreferrer">@graf_lukas_support</a>
-                  <div class="support-contact-item__hint">Быстрые уточнения и связь по активным заказам</div>
+                  <div class="support-contact-item__value">@graf_lukas_support</div>
+                  <div class="support-contact-item__hint">
+                    Ссылка будет добавлена после публикации реального публичного контакта
+                  </div>
                 </div>
 
                 <div class="support-contact-item">
                   <div class="support-contact-item__label">Режим ответа</div>
                   <div class="support-contact-item__value">Ежедневно, 10:00–22:00 МСК</div>
-                  <div class="support-contact-item__hint">По срочным вопросам лучше писать в Telegram</div>
+                  <div class="support-contact-item__hint">
+                    Для проверки заказа лучше сразу указывать email и номер заказа
+                  </div>
                 </div>
               </address>
             </article>
@@ -213,11 +203,34 @@
             <article class="support-card" aria-labelledby="supportTipsTitle">
               <h2 class="support-card__title" id="supportTipsTitle">Что ускоряет ответ</h2>
               <p class="support-card__text">
-                Чтобы не было лишних уточнений, укажи номер заказа, сервис, способ оплаты и коротко опиши, где именно возникла проблема.
+                Чтобы не было лишних уточнений, укажи номер заказа, сервис, способ оплаты и коротко
+                опиши, где именно возникла проблема.
               </p>
               <p class="support-card__meta">
-                Чем точнее входные данные, тем быстрее можно проверить выдачу и предложить решение.
+                Чем точнее входные данные, тем быстрее можно проверить статус и предложить следующий шаг.
               </p>
+            </article>
+
+            <article class="support-card" aria-labelledby="supportLegalTitle">
+              <h2 class="support-card__title" id="supportLegalTitle">Документы</h2>
+              <p class="support-card__text">
+                Перед оформлением заказа можно ознакомиться с политикой обработки персональных данных
+                и условиями продажи и возврата.
+              </p>
+              <div class="support-contact-list">
+                <div class="support-contact-item">
+                  <div class="support-contact-item__label">Политика данных</div>
+                  <a class="support-contact-item__value" href="/graf_lukas/pages/privacy/index.html">
+                    Открыть политику
+                  </a>
+                </div>
+                <div class="support-contact-item">
+                  <div class="support-contact-item__label">Условия продажи</div>
+                  <a class="support-contact-item__value" href="/graf_lukas/pages/terms/index.html">
+                    Открыть условия
+                  </a>
+                </div>
+              </div>
             </article>
           </aside>
         </div>
@@ -248,19 +261,15 @@
 
     <div class="search-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
       <div class="search-modal__top">
-        <svg class="search-modal__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <svg class="search-modal__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          aria-hidden="true">
           <circle cx="11" cy="11" r="7"></circle>
           <path d="m20 20-3.5-3.5"></path>
         </svg>
 
         <label class="sr-only" for="searchInput">Поиск товаров</label>
-        <input
-          class="search-modal__input"
-          id="searchInput"
-          type="search"
-          placeholder="Найти Steam, Spotify, Telegram Premium..."
-          autocomplete="off"
-        >
+        <input class="search-modal__input" id="searchInput" type="search"
+          placeholder="Найти Steam, Spotify, Telegram Premium..." autocomplete="off">
 
         <button class="search-modal__close" id="searchCloseBtn" type="button" aria-label="Закрыть поиск">
           Esc
@@ -285,4 +294,5 @@
   <script src="/graf_lukas/assets/js/app.js"></script>
   <script src="/graf_lukas/assets/js/pages/support.js"></script>
 </body>
+
 </html>
