@@ -23,7 +23,7 @@ window.GrafLukasCart = (function () {
   const getCart = () => readCart();
 
   const getCartCount = () => {
-    return readCart().reduce((total, item) => total + item.quantity, 0);
+    return readCart().reduce((total, item) => total + (item.quantity || 1), 0);
   };
 
   const findProduct = (productId) => {
@@ -34,11 +34,12 @@ window.GrafLukasCart = (function () {
     const product = findProduct(productId);
     if (!product) return;
 
+    const safeQuantity = Number(quantity) > 0 ? Number(quantity) : 1;
     const cart = readCart();
     const existingItem = cart.find((item) => item.id === productId);
 
     if (existingItem) {
-      existingItem.quantity += quantity;
+      existingItem.quantity += safeQuantity;
     } else {
       cart.push({
         id: product.id,
@@ -46,8 +47,9 @@ window.GrafLukasCart = (function () {
         price: product.price,
         numericPrice: product.numericPrice || 0,
         image: product.image,
+        imageBg: product.imageBg || "",
         href: product.href,
-        quantity
+        quantity: safeQuantity
       });
     }
 
@@ -67,12 +69,14 @@ window.GrafLukasCart = (function () {
 
     if (!item) return;
 
-    if (quantity <= 0) {
+    const nextQuantity = Number(quantity);
+
+    if (!Number.isFinite(nextQuantity) || nextQuantity <= 0) {
       remove(productId);
       return;
     }
 
-    item.quantity = quantity;
+    item.quantity = Math.floor(nextQuantity);
     writeCart(cart);
     notify();
   };
@@ -84,7 +88,7 @@ window.GrafLukasCart = (function () {
 
   const getSubtotal = () => {
     return readCart().reduce((sum, item) => {
-      return sum + (item.numericPrice || 0) * item.quantity;
+      return sum + (item.numericPrice || 0) * (item.quantity || 1);
     }, 0);
   };
 
@@ -126,8 +130,9 @@ window.GrafLukasCart = (function () {
   const bindCartCounter = (selector = "[data-cart-count]") => {
     const updateCounter = () => {
       const count = getCartCount();
+
       document.querySelectorAll(selector).forEach((node) => {
-        node.textContent = count;
+        node.textContent = String(count);
         node.hidden = count === 0;
       });
     };
