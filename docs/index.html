@@ -53,12 +53,15 @@
 
           <button class="icon-button" id="themeToggleBtn" type="button" aria-label="Переключить тему">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 21 12.79z"></path>
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
             </svg>
           </button>
 
           <a class="button button--ghost" href="/graf_lukas/pages/account/index.html">Войти</a>
-          <a class="button button--primary" href="/graf_lukas/pages/checkout/index.html" id="cartButton">Корзина</a>
+          <a class="button button--primary" href="/graf_lukas/pages/checkout/index.html" id="cartButton">
+            Корзина
+            <span class="product-card__badge" data-cart-count hidden>0</span>
+          </a>
         </div>
       </div>
     </header>
