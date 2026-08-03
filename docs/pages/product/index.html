@@ -4,10 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>Товар — Graf Lukas</title>
+  <title>Аккаунт — Graf Lukas</title>
 
   <meta name="description"
-    content="Страница товара Graf Lukas: описание подписки, цена, детали активации и похожие товары.">
+    content="Личный кабинет Graf Lukas: вход по номеру телефона или через VK ID, привязка гостевых заказов.">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#171a21" media="(prefers-color-scheme: dark)">
 
@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="/graf_lukas/assets/css/base.css">
   <link rel="stylesheet" href="/graf_lukas/assets/css/layout.css">
   <link rel="stylesheet" href="/graf_lukas/assets/css/components.css">
-  <link rel="stylesheet" href="/graf_lukas/assets/css/pages/product.css">
+  <link rel="stylesheet" href="/graf_lukas/assets/css/pages/account.css">
 
   <script src="/graf_lukas/assets/js/theme.js"></script>
 </head>
@@ -53,7 +53,7 @@
             </svg>
           </button>
 
-          <a class="button button--ghost" href="/graf_lukas/pages/account/index.html">Аккаунт</a>
+          <a class="button button--ghost" href="/graf_lukas/pages/account/index.html">Войти</a>
 
           <a class="button button--secondary" href="/graf_lukas/pages/checkout/index.html">
             Корзина
@@ -63,139 +63,102 @@
       </div>
     </header>
 
-    <main class="product-page">
+    <main class="account-page">
       <div class="container">
-        <nav class="product-breadcrumbs" aria-label="Хлебные крошки">
-          <ol role="list" class="cluster">
-            <li><a href="/graf_lukas/index.html">Главная</a></li>
-            <li>/</li>
-            <li><a href="/graf_lukas/pages/catalog/index.html">Каталог</a></li>
-            <li>/</li>
-            <li aria-current="page" data-product-breadcrumb-current>Товар</li>
-          </ol>
+        <nav class="account-breadcrumbs" aria-label="Хлебные крошки">
+          <span><a href="/graf_lukas/index.html">Главная</a></span>
+          <span>/</span>
+          <span aria-current="page">Аккаунт</span>
         </nav>
 
-        <div class="product-layout">
-          <section class="stack-lg">
-            <article class="product-media" aria-label="Изображение товара">
-              <div class="product-media__stage" data-product-image>
-                <!-- image -->
-              </div>
-            </article>
+        <div class="account-layout">
+          <aside class="account-sidebar">
+            <section class="account-profile" aria-labelledby="accountProfileTitle">
+              <div class="account-profile__top">
+                <div class="account-avatar" data-account-avatar aria-hidden="true">?</div>
 
-            <article class="product-summary">
-              <div class="product-summary__top">
-                <span class="eyebrow product-summary__eyebrow" data-product-badge>Товар</span>
-                <h1 class="product-summary__title" data-product-title>Название товара</h1>
-                <p class="product-summary__description" data-product-description>
-                  Короткое описание товара.
-                </p>
-              </div>
-
-              <div class="product-summary__meta">
-                <span class="product-meta-chip" data-product-category>Категория</span>
-                <span class="product-meta-chip" data-product-note>Быстрая выдача</span>
-              </div>
-
-              <div class="product-summary__grid">
-                <div class="product-feature">
-                  <div class="product-feature__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                    </svg>
-                  </div>
-                  <div>
-                    <div class="product-feature__title">Проверенный товар</div>
-                    <div class="product-feature__text">Описание и выдача уже подготовлены для покупки.</div>
-                  </div>
-                </div>
-
-                <div class="product-feature">
-                  <div class="product-feature__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M12 8v4l3 3"></path>
-                      <circle cx="12" cy="12" r="9"></circle>
-                    </svg>
-                  </div>
-                  <div>
-                    <div class="product-feature__title">Быстрая активация</div>
-                    <div class="product-feature__text">После оплаты данные приходят без долгого ожидания.</div>
-                  </div>
-                </div>
-
-                <div class="product-feature">
-                  <div class="product-feature__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                    </svg>
-                  </div>
-                  <div>
-                    <div class="product-feature__title">Поддержка по заказу</div>
-                    <div class="product-feature__text">Если что-то не так, покупатель видит понятный сценарий решения.
-                    </div>
-                  </div>
+                <div>
+                  <h1 class="account-profile__name" id="accountProfileTitle" data-account-name>
+                    Вход не выполнен
+                  </h1>
+                  <p class="account-profile__meta" data-account-meta>
+                    Аккаунт не обязателен для покупки — это дополнительная функция.
+                  </p>
                 </div>
               </div>
-            </article>
 
-            <article class="product-details">
-              <h2 class="product-details__title" data-product-page-title>Описание товара</h2>
-              <p class="product-summary__description" data-product-page-text>
-                Подробности о товаре и формате активации.
+              <p class="account-panel__text" style="margin-top: var(--space-4, 1rem);">
+                Покупать товары можно без входа. Аккаунт нужен только для того, чтобы видеть
+                историю заказов и добровольно привязывать к нему гостевые покупки.
               </p>
+            </section>
 
-              <div data-product-details>
-                <!-- filled by JS -->
-              </div>
-            </article>
-          </section>
-
-          <aside class="product-side">
-            <section class="product-panel" aria-label="Покупка товара">
-              <div class="product-price">
-                <div class="product-price__label">Цена</div>
-                <div class="product-price__value" data-product-price>0 ₽</div>
-                <div class="product-price__note">Моментальная цифровая выдача</div>
+            <section class="account-panel" aria-labelledby="accountLoginTitle" style="margin-top: 1.5rem;">
+              <div class="account-panel__head">
+                <div>
+                  <h2 class="account-panel__title" id="accountLoginTitle">Способы входа</h2>
+                  <p class="account-panel__text">
+                    Вход по номеру телефона и через VK ID сейчас в разработке и появятся после
+                    подключения серверной части.
+                  </p>
+                </div>
               </div>
 
-              <div class="product-actions">
-                <button class="button button--primary" type="button" data-product-add>
-                  Добавить в корзину
+              <div class="account-login-options" style="display: flex; flex-direction: column; gap: var(--space-3, 0.75rem);">
+                <button class="button button--primary" type="button" disabled aria-disabled="true">
+                  Войти по номеру телефона (скоро)
                 </button>
-
-                <a class="button button--secondary" href="/graf_lukas/pages/checkout/index.html" data-product-buy>
-                  Купить сейчас
-                </a>
-              </div>
-
-              <div class="product-status">
-                <div class="product-status__row">
-                  <span>Наличие</span>
-                  <strong>В наличии</strong>
-                </div>
-                <div class="product-status__row">
-                  <span>Формат</span>
-                  <strong>Цифровой товар</strong>
-                </div>
-                <div class="product-status__row">
-                  <span>Получение</span>
-                  <strong>После оплаты</strong>
-                </div>
-              </div>
-
-              <p class="product-panel__hint">
-                После оформления заказа данные товара и инструкция по активации будут доступны в личном кабинете.
-              </p>
-            </section>
-
-            <section class="product-similar" aria-labelledby="similarProductsTitle">
-              <h2 class="product-similar__title" id="similarProductsTitle">Похожие товары</h2>
-              <div class="product-similar__grid" data-similar-products>
-                <!-- similar products -->
+                <button class="button button--secondary" type="button" disabled aria-disabled="true">
+                  Войти через VK ID (скоро)
+                </button>
               </div>
             </section>
+
+            <nav class="account-nav" aria-label="Разделы аккаунта" style="margin-top: 1.5rem;">
+              <a class="account-nav__link" href="/graf_lukas/pages/catalog/index.html">
+                <span>Перейти в каталог</span>
+                <span>→</span>
+              </a>
+              <a class="account-nav__link" href="/graf_lukas/pages/checkout/index.html">
+                <span>Моя корзина</span>
+                <span>→</span>
+              </a>
+              <a class="account-nav__link" href="/graf_lukas/pages/support/index.html">
+                <span>Поддержка</span>
+                <span>→</span>
+              </a>
+            </nav>
           </aside>
+
+          <section class="account-main">
+            <section class="account-panel" aria-labelledby="accountOrdersTitle">
+              <div class="account-panel__head">
+                <div>
+                  <h2 class="account-panel__title" id="accountOrdersTitle">История заказов</h2>
+                  <p class="account-panel__text">
+                    История заказов появится здесь после входа. Гостевые заказы не привязываются
+                    к аккаунту автоматически — только по вашему подтверждению.
+                  </p>
+                </div>
+              </div>
+
+              <div class="account-empty" data-account-empty>
+                <div class="account-empty__title">Войдите, чтобы увидеть заказы</div>
+                <div class="account-empty__text">
+                  Если вы уже оформляли гостевой заказ, привязать его к аккаунту можно будет
+                  после подтверждения владения email или после входа по номеру телефона / VK ID.
+                </div>
+                <div style="margin-top: 1rem; display: flex; gap: var(--space-3, 0.75rem); flex-wrap: wrap;">
+                  <a class="button button--primary" href="/graf_lukas/pages/catalog/index.html">
+                    Открыть каталог
+                  </a>
+                  <a class="button button--ghost" href="/graf_lukas/pages/support/index.html">
+                    Нужна помощь с заказом
+                  </a>
+                </div>
+              </div>
+            </section>
+          </section>
         </div>
       </div>
     </main>
@@ -256,7 +219,7 @@
   <script src="/graf_lukas/assets/js/cart.js"></script>
   <script src="/graf_lukas/assets/js/search.js"></script>
   <script src="/graf_lukas/assets/js/app.js"></script>
-  <script src="/graf_lukas/assets/js/pages/product.js"></script>
+  <script src="/graf_lukas/assets/js/pages/account.js"></script>
 </body>
 
 </html>

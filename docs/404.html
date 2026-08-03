@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>404 — Страница не найдена | Graf Lukas</title>
 
-  <meta name="description" content="Страница не найдена. Вернись в каталог, на главную или воспользуйся поиском по цифровым подпискам и сервисам.">
+  <meta name="description"
+    content="Страница не найдена. Вернись в каталог, на главную или воспользуйся поиском по цифровым подпискам и сервисам.">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#171a21" media="(prefers-color-scheme: dark)">
 
@@ -23,11 +25,9 @@
       display: flex;
       flex-direction: column;
       background:
-        radial-gradient(
-          circle at top left,
+        radial-gradient(circle at top left,
           color-mix(in srgb, var(--color-primary) 10%, transparent),
-          transparent 38%
-        ),
+          transparent 38%),
         var(--color-bg);
     }
 
@@ -197,6 +197,7 @@
     }
 
     @media (max-width: 720px) {
+
       .not-found-actions,
       .not-found-search__row {
         flex-direction: column;
@@ -217,12 +218,14 @@
 
   <script src="/graf_lukas/assets/js/theme.js"></script>
 </head>
+
 <body>
   <div class="site-shell not-found-page">
     <header class="header">
       <div class="container header__inner">
         <a href="/graf_lukas/index.html" class="logo" aria-label="Graf Lukas — на главную">
-          <svg class="logo__mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+          <svg class="logo__mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2"
+            aria-hidden="true">
             <path d="M16 3 4 8.5 16 14l12-5.5L16 3Z"></path>
             <path d="M4 15.5 16 21l12-5.5"></path>
             <path d="M4 22.5 16 28l12-5.5"></path>
@@ -246,7 +249,7 @@
             </svg>
           </button>
 
-          <a class="button button--ghost" href="/graf_lukas/pages/account/index.html">Аккаунт</a>
+          <a class="button button--ghost" href="/graf_lukas/pages/account/index.html">Войти</a>
 
           <a class="button button--secondary" href="/graf_lukas/pages/checkout/index.html">
             Корзина
@@ -265,7 +268,8 @@
             <h1 class="not-found-title" id="notFoundTitle">Страница не найдена</h1>
 
             <p class="not-found-text">
-              Возможно, ссылка устарела, страница была перемещена или в адресе есть опечатка. Попробуй вернуться на главную, перейти в каталог или найти нужный сервис через поиск.
+              Возможно, ссылка устарела, страница была перемещена или в адресе есть опечатка. Попробуй вернуться на
+              главную, перейти в каталог или найти нужный сервис через поиск.
             </p>
 
             <div class="not-found-actions">
@@ -280,14 +284,8 @@
               </label>
 
               <div class="not-found-search__row">
-                <input
-                  class="not-found-search__input"
-                  id="notFoundSearch"
-                  name="q"
-                  type="search"
-                  placeholder="Например: Steam, Spotify, Telegram Premium"
-                  autocomplete="off"
-                >
+                <input class="not-found-search__input" id="notFoundSearch" name="q" type="search"
+                  placeholder="Например: Steam, Spotify, Telegram Premium" autocomplete="off">
                 <button class="button button--primary" type="submit">Найти</button>
               </div>
 
@@ -312,8 +310,8 @@
               </a>
 
               <a class="not-found-link" href="/graf_lukas/pages/account/index.html">
-                <span class="not-found-link__title">Аккаунт</span>
-                <span class="not-found-link__text">История заказов, статус покупок и быстрые действия.</span>
+                <span class="not-found-link__title">Войти</span>
+                <span class="not-found-link__text">Необязательный вход по номеру телефона или через VK ID.</span>
               </a>
 
               <a class="not-found-link" href="/graf_lukas/pages/support/index.html">
@@ -344,6 +342,9 @@
           <a href="/graf_lukas/pages/catalog/index.html">Каталог</a>
           <a href="/graf_lukas/pages/support/index.html">Поддержка</a>
           <a href="/graf_lukas/pages/account/index.html">Аккаунт</a>
+          <a href="/graf_lukas/pages/privacy/index.html">Политика данных</a>
+          <a href="/graf_lukas/pages/terms/index.html">Условия продажи</a>
+        </nav>
         </nav>
       </div>
     </footer>
@@ -354,19 +355,15 @@
 
     <div class="search-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="searchTitle">
       <div class="search-modal__top">
-        <svg class="search-modal__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <svg class="search-modal__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          aria-hidden="true">
           <circle cx="11" cy="11" r="7"></circle>
           <path d="m20 20-3.5-3.5"></path>
         </svg>
 
         <label class="sr-only" for="searchInput">Поиск товаров</label>
-        <input
-          class="search-modal__input"
-          id="searchInput"
-          type="search"
-          placeholder="Найти Steam, Spotify, Telegram Premium..."
-          autocomplete="off"
-        >
+        <input class="search-modal__input" id="searchInput" type="search"
+          placeholder="Найти Steam, Spotify, Telegram Premium..." autocomplete="off">
 
         <button class="search-modal__close" id="searchCloseBtn" type="button" aria-label="Закрыть поиск">
           Esc
@@ -389,4 +386,5 @@
   <script src="/graf_lukas/assets/js/search.js"></script>
   <script src="/graf_lukas/assets/js/app.js"></script>
 </body>
+
 </html>
